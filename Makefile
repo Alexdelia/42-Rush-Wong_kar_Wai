@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/17 12:14:15 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/17 12:26:57 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ CFLAGS =	-Wall -Werror -Wextra
 CFLAGS +=	-g3
 # CFLAGS +=	-O2
 # CFLAGS +=	-fsanitize=address
+
+#CFLAGS +=	-lncurses
 
 # **************************************************************************** #
 #	MAKEFILE	#
