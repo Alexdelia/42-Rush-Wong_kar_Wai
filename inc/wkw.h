@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 20:28:23 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:39:28 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ int		end(t_env *e, const int ret);
 
 // key handling (key.c)
 bool	resize(t_env *e);
+bool	is_exit(const int key);
+bool	is_arrow(const int key);
+bool	is_revert(const int key);
 
 // map
 bool	insert(t_env *e);
@@ -77,8 +80,6 @@ size_t	empty_count(size_t **map, const size_t size);
 void	free_map(size_t **map, const size_t size);
 
 // utils
-bool	is_exit(const int key);
-bool	is_arrow(const int key);
 bool	valid_size(t_env *e);
 void	pmw(t_env *e, const char *text);
 

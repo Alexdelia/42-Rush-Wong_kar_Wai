@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:53:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 18:36:52 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:41:27 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,11 @@ bool	resize(t_env *e)
 	}
 	attrset(A_NORMAL);
 	// might need to show the board again
+	return (true);
+}
+
+bool	key_handle(t_env *e)
+{
+
 	return (true);
 }

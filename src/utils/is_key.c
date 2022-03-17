@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:37:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 20:11:42 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:38:50 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ bool	is_arrow(const int key)
 		|| key == KEY_S
 		|| key == KEY_A
 		|| key == KEY_D);
+}
+
+bool	is_revert(const int key)
+{
+	return (key == KEY_R
+		|| key == KEY_E);
 }

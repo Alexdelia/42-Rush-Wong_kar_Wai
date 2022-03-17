@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 20:28:07 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:47:06 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,18 @@ int	main(void)
 	{
 		// clear maybe
 		e.key = 0;
-		while (!is_arrow(e.key))
+		while (!is_arrow(e.key) && !is_exit(e.key))
 		{
 			e.key = getch();
-			if (is_exit(e.key))
-				break ;
+			if (is_revert(e.key))
+				revert_insert(&e);
 		}
-		// handle arrow
-		insert(&e);
+		if (is_exit(e.key))
+			break ;
+		if (key_handle(&e)) // handle arrow
+			return (end(&e, 3));
+		if (insert(&e))
+			return (end(&e, 4));
 		// print_map(e); // with score and print win if win
 	}
 	// bonus: ask for pseudo and save score
