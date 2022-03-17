@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   end.c                                              :+:      :+:    :+:   */
+/*   ft_stlen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 16:16:57 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 21:52:02 by adelille         ###   ########.fr       */
+/*   Created: 2021/04/13 14:39:24 by adelille          #+#    #+#             */
+/*   Updated: 2022/03/17 21:32:27 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/wkw.h"
+#include "../../inc/wkw.h"
 
-void	free_map(t_env *e)
+size_t	ft_stlen(size_t n)
 {
 	size_t	i;
 
+	if (n == 0)
+		return (1);
 	i = 0;
-	while (i < e->size)
+	while (n)
 	{
-		free(e->map[i]);
+		n /= 10;
 		i++;
 	}
-	free(e->map);
-	e->map = NULL;
-}
-
-int	end(t_env *e, const int ret)
-{
-	endwin();
-	if (e->map)
-		free_map(e);
-	return (ret);
+	return (i);
 }

@@ -5,4 +5,4 @@ multiple size board
 menu // to finish (show highscore)
 highscore // todo
 ascii number // pretty sure, won't do
-revert last move // pretty sure, won't do
+revert last move // might do

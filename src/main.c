@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 20:47:06 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:54:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,23 @@ int	main(void)
 		return (end(&e, 1));
 	if (!menu(&e)) // choosing size of board
 		return (end(&e, 2));
-	while (true /*!lose()*/)
+	while (!lost(&e))
 	{
 		// clear maybe
+		print_map(&e); // with score and print win if win
 		e.key = 0;
 		while (!is_arrow(e.key) && !is_exit(e.key))
 		{
 			e.key = getch();
-			if (is_revert(e.key))
-				revert_insert(&e);
+			if (e.key == KEY_RESIZE)
+				resize(&e);
 		}
 		if (is_exit(e.key))
 			break ;
-		if (key_handle(&e)) // handle arrow
+		if (!key_handle(&e)) // handle arrow
 			return (end(&e, 3));
-		if (insert(&e))
+		if (!insert(&e)) // only if a fusion occurred
 			return (end(&e, 4));
-		// print_map(e); // with score and print win if win
 	}
 	// bonus: ask for pseudo and save score
 	return (end(&e, 0));

@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   end.c                                              :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 16:16:57 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 21:52:02 by adelille         ###   ########.fr       */
+/*   Created: 2022/03/17 21:03:22 by adelille          #+#    #+#             */
+/*   Updated: 2022/03/17 21:19:49 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wkw.h"
 
-void	free_map(t_env *e)
+/*bool	move_up(t_env *e)
 {
-	size_t	i;
 
-	i = 0;
-	while (i < e->size)
-	{
-		free(e->map[i]);
-		i++;
-	}
-	free(e->map);
-	e->map = NULL;
+	return (true);
 }
 
-int	end(t_env *e, const int ret)
+bool	move_down(t_env *e)
 {
-	endwin();
-	if (e->map)
-		free_map(e);
-	return (ret);
+
+	return (true);
 }
+
+bool	move_left(t_env *e)
+{
+
+	return (true);
+}
+
+bool	move_right(t_env *e)
+{
+
+	return (true);
+}*/

@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 20:39:28 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:48:07 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # endif
 
 # define MIN_ROW	12
-# define MIN_COL	10
+# define MIN_COL	20 // not right
 
 # define MIN_BOARD	4
 # define MAX_BOARD	5
@@ -60,27 +60,35 @@ typedef struct s_env
 	size_t	**map;
 	size_t	size;
 	size_t	score;
-	size_t	row_last_insert;
-	size_t	col_last_insert;
 }			t_env;
 
 // function in process order
 bool	menu(t_env *e);
+bool	lost(t_env *e);
 int		end(t_env *e, const int ret);
 
 // key handling (key.c)
+bool	key_handle(t_env *e);
 bool	resize(t_env *e);
 bool	is_exit(const int key);
 bool	is_arrow(const int key);
 bool	is_revert(const int key);
 
+// move
+/*bool	move_up(t_env *e);
+bool	move_down(t_env *e);
+bool	move_left(t_env *e);
+bool	move_right(t_env *e);*/
+
 // map
 bool	insert(t_env *e);
 size_t	empty_count(size_t **map, const size_t size);
-void	free_map(size_t **map, const size_t size);
+void	print_map(t_env *e);
+void	free_map(t_env *e);
 
 // utils
 bool	valid_size(t_env *e);
 void	pmw(t_env *e, const char *text);
+size_t	ft_stlen(size_t n);
 
 #endif
