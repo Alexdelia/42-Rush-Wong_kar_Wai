@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/17 12:26:57 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/17 16:58:47 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS +=	-g3
 # CFLAGS +=	-O2
 # CFLAGS +=	-fsanitize=address
 
-#CFLAGS +=	-lncurses
+# CFLAGS +=	-lncurses
 
 # **************************************************************************** #
 #	MAKEFILE	#
@@ -86,7 +86,7 @@ launch:
 	$(call progress_bar)
 
 $(NAME):	$(OBJS) lib
-	$(CC) $(CFLAGS) $(OBJS) $(LIBNAME) -o $(NAME)
+	$(CC) $(CFLAGS) -lncurses $(OBJS) $(LIBNAME) -o $(NAME)
 
 $(OBJSPATH)%.o: $(SRCSPATH)%.c
 	@mkdir -p $(dir $@) # 2> /dev/null || true
@@ -101,7 +101,8 @@ clean:
 	@$(RM) $(OBJSPATH)
 	@make clean -C $(LIBPATH)
 
-fclean:		clean
+fclean:
+	@$(RM) $(OBJSPATH)
 	@$(RM) $(NAME)
 	@make fclean -C $(LIBPATH)
 
