@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 21:48:07 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 23:52:42 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,19 @@
 # define KEY_E		101
 
 # define CP_RED		1
+
+# define SYMBOL_2		"○"
+# define SYMBOL_4		"⊚"
+# define SYMBOL_8		"⊝"
+# define SYMBOL_16		"⊕"
+# define SYMBOL_32		"⊘"
+# define SYMBOL_64		"⊗"
+# define SYMBOL_128		"⊛"
+# define SYMBOL_256		"⬠"
+# define SYMBOL_512		"⬡"
+# define SYMBOL_1024	"⏣"
+# define SYMBOL_2048	"א"
+# define SYMBOL_4096	"∞"
 
 // https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/
 
