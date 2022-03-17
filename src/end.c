@@ -6,13 +6,13 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 16:16:57 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 16:47:28 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 19:30:29 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wkw.h"
 
-static void	free_map(size_t **map, const size_t size)
+void	free_map(size_t **map, const size_t size)
 {
 	size_t	i;
 
@@ -23,6 +23,7 @@ static void	free_map(size_t **map, const size_t size)
 		i++;
 	}
 	free(map);
+	map = NULL;
 }
 
 int	end(t_env *e, const int ret)

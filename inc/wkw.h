@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 19:04:35 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 19:29:18 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_env
 }			t_env;
 
 // function in process order
+bool	menu(t_env *e);
 int		end(t_env *e, const int ret);
 
 // key handling (key.c)
@@ -63,5 +64,6 @@ bool	resize(t_env *e);
 bool	is_exit(const int key);
 bool	valid_size(t_env *e);
 void	pmw(t_env *e, const char *text);
+void	free_map(size_t **map, const size_t size);
 
 #endif
