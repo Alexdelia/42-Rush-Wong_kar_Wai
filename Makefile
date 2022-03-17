@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/17 18:54:04 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/17 19:38:57 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,9 @@ CFLAGS +=	-g3
 
 # NCFLAGS =	-lncurses
 NCFLAGS =	-std=c99
-#NCFLAGS +=	$(shell ncursesw5-config --cflags --libs)
-NCFLAGS +=	-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -Wl,-Bsymbolic-functions -lncursesw -ltinfo
+NCFLAGS +=	$(shell ncursesw5-config --cflags --libs)
+#NCFLAGS +=	-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -Wl,-Bsymbolic-functions -lncursesw -ltinfo
+#NCFLAGS +=	--disable-leaks
 
 # **************************************************************************** #
 #	MAKEFILE	#

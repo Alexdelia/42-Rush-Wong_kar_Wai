@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_exit.c                                          :+:      :+:    :+:   */
+/*   is_key.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:37:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 16:13:16 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:11:42 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,16 @@ bool	is_exit(const int key)
 		|| key == KEY_ESCAPE
 		|| key == KEY_CC
 		|| key == KEY_CD);
+}
+
+bool	is_arrow(const int key)
+{
+	return (key == KEY_UP
+		|| key == KEY_DOWN
+		|| key == KEY_LEFT
+		|| key == KEY_RIGHT
+		|| key == KEY_W
+		|| key == KEY_S
+		|| key == KEY_A
+		|| key == KEY_D);
 }

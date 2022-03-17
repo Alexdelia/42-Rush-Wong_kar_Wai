@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 19:29:18 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:28:23 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <locale.h>
+# include <time.h>
 
 # ifndef WIN_VALUE
 #  define WIN_VALUE	2048
@@ -37,6 +38,14 @@
 # define KEY_CD		4
 # define KEY_Q		113
 
+# define KEY_W		119
+# define KEY_S		115
+# define KEY_A		97
+# define KEY_D		100
+
+# define KEY_R		114
+# define KEY_E		101
+
 # define CP_RED		1
 
 // https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/
@@ -51,6 +60,8 @@ typedef struct s_env
 	size_t	**map;
 	size_t	size;
 	size_t	score;
+	size_t	row_last_insert;
+	size_t	col_last_insert;
 }			t_env;
 
 // function in process order
@@ -60,10 +71,15 @@ int		end(t_env *e, const int ret);
 // key handling (key.c)
 bool	resize(t_env *e);
 
+// map
+bool	insert(t_env *e);
+size_t	empty_count(size_t **map, const size_t size);
+void	free_map(size_t **map, const size_t size);
+
 // utils
 bool	is_exit(const int key);
+bool	is_arrow(const int key);
 bool	valid_size(t_env *e);
 void	pmw(t_env *e, const char *text);
-void	free_map(size_t **map, const size_t size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:19:51 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 19:31:31 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 20:28:00 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static bool	init_map(t_env *e)
 		i++;
 	}
 	e->map[i] = NULL;
+	insert(e);
+	insert(e);
 	return (true);
 }
 
