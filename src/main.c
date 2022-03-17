@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 17:07:09 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 19:06:32 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,32 @@ static bool	menu(t_env *e)
 	while (e->size < MIN_BOARD || e->size > MAX_BOARD)
 	{
 		clear();
-		if (e->key != 0)
-			printw("Error: size of board should be between, %d and %d",
-					MIN_BOARD, MAX_BOARD);
-		pmw(e, "please enter size of board");
+		if (e->size != 0)
+			printw("ERROR: size of board should be between, %d and %d",
+					MIN_BOARD, MAX_BOARD); //
+		pmw(e, "😃please enter size of board");
 		e->key = getch();
 		if (is_exit(e->key))
 			return (false);
-		e->size = (char)e->key - '0';
+		else if (e->key == KEY_RESIZE)
+		{
+			e->size = 0;
+			if (!resize(e))
+				return (false);
+		}
+		else
+			e->size = (char)e->key - '0';
 	}
 	clear();
+	return (true);
+}
+
+static bool	init_colors(void)
+{
+	if (!has_colors())
+		return (!ft_ps("Error: your terminal doesn't support colors\n"));
+	start_color();
+	init_pair(CP_RED, COLOR_RED, COLOR_BLACK);
 	return (true);
 }
 
@@ -36,10 +52,13 @@ static bool	init(t_env *e)
 	e->map = NULL;
 	e->size = 0;
 	e->score = 0;
+	setlocale(LC_ALL, "");
 	initscr();
 	raw();
 	noecho();
 	keypad(stdscr, TRUE);
+	if (!init_colors())
+		return (false);
 	if (!resize(e))
 		return (false);
 	if (!menu(e)) // choosing size of board

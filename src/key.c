@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:53:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 16:13:38 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:36:52 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 
 bool	resize(t_env *e)
 {
-	int		key;
-
 	getmaxyx(stdscr, e->row, e->col);
-	key = 0;
+	attrset(A_BOLD | COLOR_PAIR(CP_RED));
 	while (!valid_size(e))
 	{
-		endwin();
-		ft_ps("The window is too small\nplease resize it\n");
-		key = 0;
-		while (key != KEY_RESIZE)
+		clear();
+		mvprintw(0, 0, "⌜");
+		mvprintw(0, e->col - 1, "⌝");
+		mvprintw(e->row - 1, 0, "⌞");
+		mvprintw(e->row - 1, e->col - 1, "⌟");
+		pmw(e, "too small");
+		refresh();
+		e->key = 0;
+		while (e->key != KEY_RESIZE)
 		{
-			key = getch();
-			if (is_exit(key))
+			e->key = getch();
+			if (is_exit(e->key))
 				return (false);
 		}
 		getmaxyx(stdscr, e->row, e->col);
 	}
-	if (key == KEY_RESIZE)
-		initscr();
+	attrset(A_NORMAL);
 	// might need to show the board again
 	return (true);
 }

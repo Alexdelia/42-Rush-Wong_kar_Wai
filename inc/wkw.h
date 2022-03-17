@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 16:45:17 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/17 19:04:35 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <limits.h>
+# include <locale.h>
 
 # ifndef WIN_VALUE
 #  define WIN_VALUE	2048
@@ -35,6 +36,8 @@
 # define KEY_CC		3
 # define KEY_CD		4
 # define KEY_Q		113
+
+# define CP_RED		1
 
 // https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/
 
