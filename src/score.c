@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 17:00:41 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 19:26:29 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,12 @@ bool	save_score(t_env *e)
 	if (fd < 0)
 		return (false);
 	return (write_score(e, pseudo, fd));
+}
+
+void	choose_score(t_env *e)
+{
+	clear();
+	print_frame(e, get_color(2048));
+	pmw(e, "SCORE");
+	getch();
 }

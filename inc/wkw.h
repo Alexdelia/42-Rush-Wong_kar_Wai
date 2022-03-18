@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 18:17:35 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 19:25:48 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ bool	power_of_2(const size_t n);
 size_t	ft_atost(char *str);
 char	*ft_sttoa(size_t n);
 void	print_frame(t_env *e, const int color);
+void	ft_bzero_st(size_t *s, size_t n);
 
 #endif
