@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 22:25:52 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:30:01 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,9 @@ static void	print_score(t_env *e, t_score *s, const size_t *sort)
 		mvaddstr(3 + i, 8, s[sort[i]].pseudo);
 		mvprintw(3 + i, (e->col - ft_stlen(s[sort[i]].score)) / 2 + 3,
 					"%ld", s[sort[i]].score);
+		attron(COLOR_PAIR(get_color(s[sort[i]].top)));
 		mvprintw(3 + i, e->col - 9, "%ld", s[sort[i]].top);
+		attroff(COLOR_PAIR(get_color(s[sort[i]].top)));
 		i++;
 	}
 	attrset(A_NORMAL);

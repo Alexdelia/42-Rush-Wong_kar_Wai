@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 22:19:55 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:30:16 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define MIN_ROW	12
 # define MIN_COL	30
 
-# define MIN_BOARD	4
+# define MIN_BOARD	3
 # define MAX_BOARD	5
 
 # ifndef SCORE_PATH

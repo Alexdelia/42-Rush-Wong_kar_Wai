@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 12:42:03 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 17:30:54 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:02:13 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_color(const int val)
 	else if (val >= 4096)
 		return (144);
 	else
-		return (val / 256 + 128);
+		return ((val / 256) + 128);
 }
 
 static int	r(const int val)
