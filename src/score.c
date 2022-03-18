@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 20:11:38 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 20:30:53 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,22 @@ static void print_frame_score(t_env *e, const int color)
 	mvaddstr(e->row - 3, e->col - 2, "╱.");
 	mvaddstr(e->row - 2, e->col - 3, "╱.");
 	attrset(A_NORMAL);
+	// 18 min
 }
 
 void	choose_score(t_env *e)
 {
 	clear();
 	print_frame_score(e, get_color(2048));
+	attrset(A_BOLD);
+	mvprintw(3, 7, "PSEUDO");
+	mvprintw(3, (e->col - ft_strlen("SCORE")) / 2 + 3, "SCORE");
+	mvprintw(3, e->col - 8, "TOP");
+	attrset(A_NORMAL);
 	pmw(e, "SCORE");
-	getch();
+	if (getch() == KEY_RESIZE)
+	{
+		resize(e);
+		choose_score(e);
+	}
 }

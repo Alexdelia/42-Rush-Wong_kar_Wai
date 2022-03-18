@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:19:51 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 19:33:42 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 20:26:49 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ bool	choose_play(t_env *e)
 bool	menu(t_env *e)
 {
 	e->key = 's';
-	while (e->key == 's' || e->key == 'S')
+	while (e->key == 's' || e->key == 'S' || e->key == KEY_RESIZE)
 	{
 		clear();
 		print_menu(e);
@@ -82,6 +82,8 @@ bool	menu(t_env *e)
 		}
 		else if (e->key == 's' || e->key == 'S')
 			choose_score(e);
+		else if (e->key == KEY_RESIZE)
+			resize(e);
 		else
 			return (false);
 	}
