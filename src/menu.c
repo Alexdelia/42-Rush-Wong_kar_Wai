@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:19:51 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 17:38:12 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:17:25 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,34 @@ static bool	init_map(t_env *e)
 	return (true);
 }
 
+void	print_frame(t_env *e, const int color)
+{
+	size_t	i;
+
+	attrset(COLOR_PAIR(color));
+	addstr("╔");
+	i = 0;
+	while (++i < (size_t)e->col - 1)
+		addstr("═");
+	addstr("╗");
+	i = 0;
+	while (++i < (size_t)e->row - 1)
+	{
+		mvaddstr(i, 0, "║");
+		mvaddstr(i, e->col - 1, "║");
+	}
+	move(i, 0);
+	addstr("╚");
+	i = 0;
+	while (++i < (size_t)e->col - 1)
+		addstr("═");
+	addstr("╝");
+	attrset(A_NORMAL);
+}
+
 static void	print_menu(t_env *e)
 {
-	//print_border(e, CP_MENU);
+	print_frame(e, CP_MENU);
 	attrset(A_BOLD | COLOR_PAIR(CP_PLAY));
 	mvprintw((e->row - 1) / 2 - 1,
 		(e->col - ft_strlen(MSG_PLAY)) / 2, MSG_PLAY);
@@ -77,18 +102,23 @@ static void	print_menu(t_env *e)
 
 bool	menu(t_env *e)
 {
-	print_menu(e);
-	move((e->row - 1) / 2 + 3, e->col / 2 - 2);
-	e->key = getch();
-	if (e->key == 'p' || e->key == 'P' || e->key == '\n')
+	e->key = 's';
+	while (e->key == 's' || e->key == 'S')
 	{
-		if (!choose_play(e))
+		clear();
+		print_menu(e);
+		move((e->row - 1) / 2 + 3, e->col / 2 - 2);
+		e->key = getch();
+		if (e->key == 'p' || e->key == 'P' || e->key == '\n')
+		{
+			if (!choose_play(e))
+				return (false);
+		}
+		else if (e->key == 's' || e->key == 'S')
+			choose_score(e);
+		else
 			return (false);
 	}
-	else if (e->key == 's' || e->key == 'S')
-		choose_score(e);
-	else
-		return (false);
 	clear();
 	curs_set(0);
 	return (init_map(e));

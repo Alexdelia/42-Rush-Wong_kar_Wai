@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 15:26:45 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:41:55 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ static void	print_win(t_env *e)
 
 static void	print_score(t_env *e)
 {
-	mvprintw(1, (e->col - (ft_strlen("SCORE: ") + ft_stlen(e->score))) / 2,
-		"SCORE: %ld\n", e->score);
+	mvprintw(1, (e->col - (ft_strlen(MSG_CUR_SCORE) + 1
+		+ ft_stlen(e->score))) / 2,
+		"%s %ld\n", MSG_CUR_SCORE, e->score);
 }
 
 static void	print_wall(const size_t size)

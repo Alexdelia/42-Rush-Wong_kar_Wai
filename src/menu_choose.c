@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 17:19:09 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 17:29:41 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:17:15 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 bool	choose_play(t_env *e)
 {
 	clear();
+	print_frame(e, COLOR_PAIR(CP_PLAY));
 	e->key = 0;
 	attrset(A_BOLD);
 	while (e->size < MIN_BOARD || e->size > MAX_BOARD)
 	{
-		clear();
 		if (e->size != 0)
 			mvprintw(e->row - 2, 2,
 				"size of board should be between %d and %d",
@@ -41,10 +41,10 @@ bool	choose_play(t_env *e)
 	return (true);
 }
 
-bool	choose_score(t_env *e)
+void	choose_score(t_env *e)
 {
 	clear();
+	print_frame(e, get_color(2048));
 	pmw(e, "SCORE");
 	getch();
-	return (true);
 }
