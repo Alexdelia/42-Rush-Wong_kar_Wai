@@ -6,11 +6,28 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 23:39:33 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:46:46 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:54:04 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wkw.h"
+
+static void	print_frame_score_end(t_env *e, size_t i)
+{
+	mvaddstr(i, 4, "▏  ╱");
+	mvaddstr(i + 1, 4, "╲ˍ╱S");
+	move(i - 1, 8);
+	i = 0;
+	while (++i < (size_t)e->col - 10)
+		addstr("_");
+	move(e->row - 2, 8);
+	i = 0;
+	while (++i < (size_t)e->col - 10)
+		addstr("_");
+	mvaddstr(e->row - 4, e->col - 2, "_");
+	mvaddstr(e->row - 3, e->col - 2, "╱.");
+	mvaddstr(e->row - 2, e->col - 3, "╱.");
+}
 
 void	print_frame_score(t_env *e, const int color)
 {
@@ -31,21 +48,8 @@ void	print_frame_score(t_env *e, const int color)
 		mvaddstr(i, 4, "▏");
 		mvaddstr(i, e->col - 3, "▏.");
 	}
-	mvaddstr(i, 4, "▏  ╱");
-	mvaddstr(i + 1, 4, "╲ˍ╱S");
-	move(i - 1, 8);
-	i = 0;
-	while (++i < (size_t)e->col - 10)
-		addstr("_");
-	move(e->row - 2, 8);
-	i = 0;
-	while (++i < (size_t)e->col - 10)
-		addstr("_");
-	mvaddstr(e->row - 4, e->col - 2, "_");
-	mvaddstr(e->row - 3, e->col - 2, "╱.");
-	mvaddstr(e->row - 2, e->col - 3, "╱.");
+	print_frame_score_end(e, i);
 	attrset(A_NORMAL);
-	// 18 size min
 }
 
 void	print_score(t_env *e, t_score *s, const size_t *sort)
