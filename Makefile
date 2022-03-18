@@ -6,12 +6,13 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/18 16:43:34 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/18 23:18:03 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	game_2048
-CC = 	clang
+#CC = 	clang
+CC =	cc
 AR =	ar rcs
 RM = 	rm -rf
 
@@ -20,7 +21,7 @@ CFLAGS +=	-g3
 # CFLAGS +=	-O2
 # CFLAGS +=	-fsanitize=address
 
-# NCFLAGS =	-lncurses
+#NCFLAGS =	-lncurses
 NCFLAGS =	-std=c99
 NCFLAGS +=	$(shell ncursesw5-config --cflags --libs)
 #NCFLAGS +=	-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -Wl,-Bsymbolic-functions -lncursesw -ltinfo
@@ -90,7 +91,7 @@ launch:
 	$(call progress_bar)
 
 $(NAME):	$(OBJS) lib
-	$(CC) $(CFLAGS) $(NCFLAGS) $(OBJS) $(LIBNAME) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBNAME) -o $(NAME) $(NCFLAGS)
 
 $(OBJSPATH)%.o: $(SRCSPATH)%.c
 	@mkdir -p $(dir $@) # 2> /dev/null || true
