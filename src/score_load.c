@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 20:53:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 21:52:33 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:17:12 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static size_t	ft_strcpy_wkw(char *dst, const char *src, const size_t size)
 	size_t	i;
 
 	i = 0;
-	while (i < size && src[i])
+	while (i < size && src[i] && src[i] != '\n')
 	{
 		dst[i] = src[i];
 		i++;
@@ -90,6 +90,8 @@ static size_t	index_big(t_score *s, const size_t big)
 		}
 		i++;
 	}
+	if (local_big == 0)
+		return (i);
 	return (index_big);
 }
 
@@ -106,4 +108,5 @@ void	sort_score(t_score *s, size_t *sort)
 		big = s[sort[i]].score;
 		i++;
 	}
+	sort[i] = i;
 }

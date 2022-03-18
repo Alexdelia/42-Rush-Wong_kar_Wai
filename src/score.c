@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 21:51:45 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:25:52 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ bool	save_score(t_env *e)
 			break ;
 		e->key = getch();
 	}
+	pseudo[i] = '\0';
 	fd = open(SCORE_PATH, O_CREAT | O_RDWR | O_APPEND, 0664);
 	if (fd < 0)
 		return (false);
@@ -114,14 +115,14 @@ static void	print_score(t_env *e, t_score *s, const size_t *sort)
 
 	i = 0;
 	attrset(A_BOLD);
-	while (i < MAX_READ_SCORE && s[sort[i]].score > 0)
+	while (i < (size_t)e->row - 7 && i < MAX_READ_SCORE && s[sort[i]].score > 0)
 	{
 		if (i == 0)
-			mvaddstr(5, 6, "🏆");
-		mvaddstr(5 + i, 8, s[sort[i]].pseudo);
-		mvprintw(5 + i, (e->col - ft_stlen(s[sort[i]].score)) / 2 + 3,
+			mvaddstr(3, 6, "🏆");
+		mvaddstr(3 + i, 8, s[sort[i]].pseudo);
+		mvprintw(3 + i, (e->col - ft_stlen(s[sort[i]].score)) / 2 + 3,
 					"%ld", s[sort[i]].score);
-		mvprintw(5 + i, e->col - 8, "%ld", s[sort[i]].top);
+		mvprintw(3 + i, e->col - 9, "%ld", s[sort[i]].top);
 		i++;
 	}
 	attrset(A_NORMAL);
@@ -134,10 +135,10 @@ void	choose_score(t_env *e)
 
 	clear();
 	print_frame_score(e, get_color(2048));
-	attrset(A_BOLD);
-	mvprintw(3, 7, "PSEUDO");
-	mvprintw(3, (e->col - ft_strlen("SCORE")) / 2 + 3, "SCORE");
-	mvprintw(3, e->col - 8, "TOP");
+	attrset(A_BOLD | A_UNDERLINE);
+	mvprintw(2, 7, "PSEUDO");
+	mvprintw(2, (e->col - ft_strlen("SCORE")) / 2 + 3, "SCORE");
+	mvprintw(2, e->col - 8, "TOP");
 	attrset(A_NORMAL);
 	read_score(s);
 	sort_score(s, sort);
