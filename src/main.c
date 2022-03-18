@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 15:32:02 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:43:46 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	init(t_env *e)
 	e->score = 0;
 	e->state = STATE_NO;
 	e->top = 2;
-	if (WIN_VALUE < 0  || !power_of_2(WIN_VALUE))
+	if (WIN_VALUE < 0 || !power_of_2(WIN_VALUE))
 		return (!ft_ps("ERROR: WIN_VALUE isn't a power of 2\n"));
 	setlocale(LC_ALL, "");
 	srand(time(NULL));
@@ -43,6 +43,7 @@ int	main(void)
 		return (end(&e, 1));
 	if (!menu(&e)) // choosing size of board
 		return (end(&e, 2));
+	e.score = 0;
 	// clear maybe
 	print_map(&e); // with score and print win if win
 	while (!lost(&e))

@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:03:22 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 15:22:48 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:50:13 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ bool	fuse_up(t_env *e)
 	while (++col < e->size)
 	{
 		row = -1;
-		while (++row < e->size - 1 && e->map[row][col])
+		while (++row < e->size - 1)
 		{
-			if (e->map[row][col] == e->map[row + 1][col])
+			if (e->map[row][col]
+					&& e->map[row][col] == e->map[row + 1][col])
 			{
 				e->map[row][col] += e->map[row + 1][col];
 				e->map[row + 1][col] = 0;
 				ret = true;
+				e->score += e->map[row][col];
 				if (e->map[row][col] > e->top)
 					e->top = e->map[row][col];
 			}
@@ -51,11 +53,13 @@ bool	fuse_down(t_env *e)
 		row = e->size;
 		while (--row > 0 && e->map[row][col])
 		{
-			if (e->map[row][col] == e->map[row - 1][col])
+			if (e->map[row][col]
+					&& e->map[row][col] == e->map[row - 1][col])
 			{
 				e->map[row][col] += e->map[row - 1][col];
 				e->map[row - 1][col] = 0;
 				ret = true;
+				e->score += e->map[row][col];
 				if (e->map[row][col] > e->top)
 					e->top = e->map[row][col];
 			}
@@ -77,11 +81,13 @@ bool	fuse_left(t_env *e)
 		col = -1;
 		while (++col < e->size - 1 && e->map[row][col])
 		{
-			if (e->map[row][col] == e->map[row][col + 1])
+			if (e->map[row][col]
+					&& e->map[row][col] == e->map[row][col + 1])
 			{
 				e->map[row][col] += e->map[row][col + 1];
 				e->map[row][col + 1] = 0;
 				ret = true;
+				e->score += e->map[row][col];
 				if (e->map[row][col] > e->top)
 					e->top = e->map[row][col];
 			}
@@ -103,11 +109,13 @@ bool	fuse_right(t_env *e)
 		col = e->size;
 		while (--col > 0 && e->map[row][col])
 		{
-			if (e->map[row][col] == e->map[row][col - 1])
+			if (e->map[row][col]
+					&& e->map[row][col] == e->map[row][col - 1])
 			{
 				e->map[row][col] += e->map[row][col - 1];
 				e->map[row][col - 1] = 0;
 				ret = true;
+				e->score += e->map[row][col];
 				if (e->map[row][col] > e->top)
 					e->top = e->map[row][col];
 			}
