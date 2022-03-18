@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:31:30 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:43:54 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	print_win(t_env *e)
 	e->state = STATE_WON;
 }
 
-static void	print_score(t_env *e)
+static void	print_map_score(t_env *e)
 {
 	mvprintw(1, (e->col - (ft_strlen(MSG_CUR_SCORE) + 1
 				+ ft_stlen(e->score))) / 2,
@@ -59,7 +59,7 @@ void	print_map(t_env *e)
 	size_t	row;
 	size_t	col;
 
-	print_score(e);
+	print_map_score(e);
 	print_wall(e->size * 2 - 1);
 	row = 0;
 	while (row < e->size)

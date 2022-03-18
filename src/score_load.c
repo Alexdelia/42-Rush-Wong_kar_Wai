@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 20:53:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 22:17:12 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:49:53 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ bool	read_score(t_score *s)
 	file = gal(fd, &size, TRUE);
 	if (!file)
 		return (false);
+	mvprintw(0, 0, "|%ld|%s|", size, file);
+	getch();
 	save_score_from_file(s, file, size);
 	free(file);
 	close(fd);
