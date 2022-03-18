@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:37:09 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:40:59 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ bool	choose_play(t_env *e);
 void	choose_score(t_env *e);
 bool	read_score(t_score *s);
 void	sort_score(t_score *s, size_t *sort);
+void	print_frame_score(t_env *e, const int color);
+void	print_score(t_env *e, t_score *s, const size_t *sort);
 
 // color
 bool	init_colors(void);
