@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:13:13 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 13:13:54 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:52:57 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GRAPHIC_H
 
 # define CP_RED		1
+# define CP_GREEN	3
 
 # define SYMBOL_0		" "
 # define SYMBOL_2		"○"

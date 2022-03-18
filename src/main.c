@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 15:43:46 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:51:45 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ int	main(void)
 			e.key = getch();
 	}
 	// bonus: ask for pseudo and save score
+	if (!save_score(&e))
+		return (end(&e, 5));
 	return (end(&e, 0));
 }

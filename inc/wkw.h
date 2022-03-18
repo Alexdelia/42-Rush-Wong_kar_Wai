@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 15:33:19 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:42:38 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <limits.h>
 # include <locale.h>
 # include <time.h>
+# include <fcntl.h>
 
 # ifndef WIN_VALUE
 #  define WIN_VALUE	2048
@@ -41,18 +42,13 @@
 # define MIN_BOARD	4
 # define MAX_BOARD	5
 
+# ifndef SCORE_PATH
+#  define SCORE_PATH	"./score.txt"
+# endif
+
 # define KEY_ESCAPE	27
 # define KEY_CC		3
 # define KEY_CD		4
-# define KEY_Q		113
-
-# define KEY_W		119
-# define KEY_S		115
-# define KEY_A		97
-# define KEY_D		100
-
-# define KEY_R		114
-# define KEY_E		101
 
 // https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/
 
@@ -73,6 +69,7 @@ typedef struct s_env
 // function in process order
 bool	menu(t_env *e);
 bool	lost(t_env *e);
+bool	save_score(t_env *e);
 int		end(t_env *e, const int ret);
 
 // color
@@ -110,5 +107,7 @@ size_t	ft_stlen(size_t n);
 bool	can_fuse_row(size_t **map, const size_t size);
 bool	can_fuse_col(size_t **map, const size_t size);
 bool	power_of_2(const size_t n);
+size_t	ft_atost(char *str);
+char	*ft_sttoa(size_t n);
 
 #endif

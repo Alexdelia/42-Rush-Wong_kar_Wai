@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 12:42:03 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 13:41:34 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:52:33 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	create_colors(void)
 static void	init_pairs(void)
 {
 	init_pair(CP_RED, COLOR_RED, COLOR_BLACK);
+	init_pair(CP_GREEN, COLOR_GREEN, COLOR_BLACK);
 	init_pair(0, COLOR_0, COLOR_BLACK);
 	init_pair(2, COLOR_2, COLOR_BLACK);
 	init_pair(4, COLOR_4, COLOR_BLACK);

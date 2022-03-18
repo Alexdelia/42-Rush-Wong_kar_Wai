@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:37:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 20:50:05 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:02:18 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	is_exit(const int key)
 {
-	return (key == KEY_Q
+	return (key == 'q'
 		|| key == KEY_BACKSPACE
 		|| key == KEY_DC
 		|| key == KEY_END
@@ -30,14 +30,14 @@ bool	is_arrow(const int key)
 		|| key == KEY_DOWN
 		|| key == KEY_LEFT
 		|| key == KEY_RIGHT
-		|| key == KEY_W
-		|| key == KEY_S
-		|| key == KEY_A
-		|| key == KEY_D);
+		|| key == 'w'
+		|| key == 's'
+		|| key == 'a'
+		|| key == 'd');
 }
 
 /*bool	is_revert(const int key)
 {
-	return (key == KEY_R
-		|| key == KEY_E);
+	return (key == 'r'
+		|| key == 'e');
 }*/
