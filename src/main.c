@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 21:18:56 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 23:33:57 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,31 @@ static bool	init(t_env *e)
 	return (true);
 }
 
+bool	play(t_env *e)
+{
+	while (!lost(e))
+	{
+		e->key = 0;
+		while (!is_arrow(e->key) && !is_exit(e->key))
+		{
+			e->key = getch();
+			if (e->key == KEY_RESIZE)
+				resize(e);
+		}
+		if (is_exit(e->key))
+			break ;
+		if (key_handle(e)) // handle arrow
+		{
+			// only if a move occurred
+			if (!insert(e))
+				return (false);
+			// clear maybe
+			print_map(e); // with score and print win if win
+		}
+	}
+	return (true);
+}
+
 int	main(void)
 {
 	t_env	e;
@@ -44,26 +69,8 @@ int	main(void)
 		return (end(&e, 2));
 	// clear maybe
 	print_map(&e); // with score and print win if win
-	while (!lost(&e))
-	{
-		e.key = 0;
-		while (!is_arrow(e.key) && !is_exit(e.key))
-		{
-			e.key = getch();
-			if (e.key == KEY_RESIZE)
-				resize(&e);
-		}
-		if (is_exit(e.key))
-			break ;
-		if (key_handle(&e)) // handle arrow
-		{
-			// only if a move occurred
-			if (!insert(&e))
-				return (end(&e, 4));
-			// clear maybe
-			print_map(&e); // with score and print win if win
-		}
-	}
+	if (!play(&e))
+		return (end(&e, 4));
 	if (e.state == STATE_LOST)
 	{
 		mvprintw(e.row - 2, (e.col - ft_strlen(MSG_LOST)) / 2, MSG_LOST);
