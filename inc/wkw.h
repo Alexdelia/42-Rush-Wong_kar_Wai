@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 13:14:17 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:23:13 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,15 @@ bool	is_exit(const int key);
 bool	is_arrow(const int key);
 bool	is_revert(const int key);
 
-// move
-/*bool	move_up(t_env *e);
+// move, fuse
+bool	move_up(t_env *e);
 bool	move_down(t_env *e);
 bool	move_left(t_env *e);
-bool	move_right(t_env *e);*/
+bool	move_right(t_env *e);
+bool	fuse_up(t_env *e);
+bool	fuse_down(t_env *e);
+bool	fuse_left(t_env *e);
+bool	fuse_right(t_env *e);
 
 // map
 bool	insert(t_env *e);
@@ -94,5 +98,7 @@ void	free_map(t_env *e);
 bool	valid_size(t_env *e);
 void	pmw(t_env *e, const char *text);
 size_t	ft_stlen(size_t n);
+bool	can_fuse_row(size_t **map, const size_t size);
+bool	can_fuse_col(size_t **map, const size_t size);
 
 #endif
