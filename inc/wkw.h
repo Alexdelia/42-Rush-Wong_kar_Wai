@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 19:34:47 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 21:39:37 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define STATE_LOST	2
 
 # define MIN_ROW	12
-# define MIN_COL	20 // not right
+# define MIN_COL	24
 
 # define MIN_BOARD	4
 # define MAX_BOARD	5
@@ -63,6 +63,15 @@ typedef struct s_env
 	size_t	top;	// biggest value on board
 }			t_env;
 
+# define MAX_READ_SCORE	42
+
+typedef struct s_score
+{
+	char	pseudo[100];
+	size_t	score;
+	size_t	top;
+}			t_score;
+
 // function in process order
 bool	lost(t_env *e);
 bool	save_score(t_env *e);
@@ -74,6 +83,8 @@ void	print_menu(t_env *e);
 void	print_frame(t_env *e, const int color);
 bool	choose_play(t_env *e);
 void	choose_score(t_env *e);
+bool	read_score(t_score *s);
+void	sort_score(t_score *s, size_t *sort);
 
 // color
 bool	init_colors(void);

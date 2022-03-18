@@ -3,6 +3,10 @@ colors
 unicode/emoji
 multiple size board
 menu // to finish (show highscore)
-highscore // todo
+highscore // todo (check if crash when pseudo is empty)
 ascii number // pretty sure, won't do
 revert last move // might do
+
+take care:
+ - use cc is compiler
+ - enum for WIN_VALUE

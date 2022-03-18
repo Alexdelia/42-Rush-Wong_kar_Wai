@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 20:30:53 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 21:51:45 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static bool	write_score(t_env *e, char *pseudo, const int fd)
 	ft_putstr_fd(" ", fd);
 	ft_putstr_fd(pseudo, fd);
 	ft_putstr_fd("\n", fd);
+	close(fd);
 	return (true);
 }
 
@@ -104,11 +105,33 @@ static void print_frame_score(t_env *e, const int color)
 	mvaddstr(e->row - 3, e->col - 2, "╱.");
 	mvaddstr(e->row - 2, e->col - 3, "╱.");
 	attrset(A_NORMAL);
-	// 18 min
+	// 18 size min
+}
+
+static void	print_score(t_env *e, t_score *s, const size_t *sort)
+{
+	size_t	i;
+
+	i = 0;
+	attrset(A_BOLD);
+	while (i < MAX_READ_SCORE && s[sort[i]].score > 0)
+	{
+		if (i == 0)
+			mvaddstr(5, 6, "🏆");
+		mvaddstr(5 + i, 8, s[sort[i]].pseudo);
+		mvprintw(5 + i, (e->col - ft_stlen(s[sort[i]].score)) / 2 + 3,
+					"%ld", s[sort[i]].score);
+		mvprintw(5 + i, e->col - 8, "%ld", s[sort[i]].top);
+		i++;
+	}
+	attrset(A_NORMAL);
 }
 
 void	choose_score(t_env *e)
 {
+	t_score	s[MAX_READ_SCORE + 1];
+	size_t	sort[MAX_READ_SCORE + 1];
+
 	clear();
 	print_frame_score(e, get_color(2048));
 	attrset(A_BOLD);
@@ -116,7 +139,9 @@ void	choose_score(t_env *e)
 	mvprintw(3, (e->col - ft_strlen("SCORE")) / 2 + 3, "SCORE");
 	mvprintw(3, e->col - 8, "TOP");
 	attrset(A_NORMAL);
-	pmw(e, "SCORE");
+	read_score(s);
+	sort_score(s, sort);
+	print_score(e, s, sort);
 	if (getch() == KEY_RESIZE)
 	{
 		resize(e);
