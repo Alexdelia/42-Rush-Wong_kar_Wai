@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 14:23:13 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:33:19 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 # ifndef WIN_VALUE
 #  define WIN_VALUE	2048
 # endif
+
+# define MSG_WON	"YOU WON"
+# define MSG_LOST	"YOU LOST"
+
+# define STATE_NO	0
+# define STATE_WON	1
+# define STATE_LOST	2
 
 # define MIN_ROW	12
 # define MIN_COL	20 // not right
@@ -53,12 +60,14 @@
 
 typedef struct s_env
 {
-	int		row;
-	int		col;
-	int		key;
+	int		row;	// window row
+	int		col;	// window column
+	int		key;	// key pressed
+	int		state;	// state of game (none, won, lost)
 	size_t	**map;
-	size_t	size;
+	size_t	size;	// size of map (4x4, 5x5, ...)
 	size_t	score;
+	size_t	top;	// biggest value on board
 }			t_env;
 
 // function in process order
@@ -100,5 +109,6 @@ void	pmw(t_env *e, const char *text);
 size_t	ft_stlen(size_t n);
 bool	can_fuse_row(size_t **map, const size_t size);
 bool	can_fuse_col(size_t **map, const size_t size);
+bool	power_of_2(const size_t n);
 
 #endif

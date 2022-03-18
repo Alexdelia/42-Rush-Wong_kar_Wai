@@ -6,11 +6,23 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 14:18:37 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:26:45 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wkw.h"
+
+static void	print_win(t_env *e)
+{
+	size_t	i;
+
+	addch('\n');
+	i = -1;
+	while (++i < (e->col - ft_strlen(MSG_WON)) / 2)
+		addch(' ');
+	addstr(MSG_WON);
+	e->state = STATE_WON;
+}
 
 static void	print_score(t_env *e)
 {
@@ -63,4 +75,7 @@ void	print_map(t_env *e)
 		row++;
 	}
 	print_wall(e->size * 2 - 1);
+	if (e->state == STATE_NO && e->top == WIN_VALUE)
+		print_win(e);
+	//refresh();
 }

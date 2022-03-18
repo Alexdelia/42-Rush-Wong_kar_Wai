@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 14:02:57 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:32:02 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ static bool	init(t_env *e)
 	e->map = NULL;
 	e->size = 0;
 	e->score = 0;
+	e->state = STATE_NO;
+	e->top = 2;
+	if (WIN_VALUE < 0  || !power_of_2(WIN_VALUE))
+		return (!ft_ps("ERROR: WIN_VALUE isn't a power of 2\n"));
 	setlocale(LC_ALL, "");
 	srand(time(NULL));
 	initscr();
@@ -59,8 +63,14 @@ int	main(void)
 				return (end(&e, 4));
 			// clear maybe
 			print_map(&e); // with score and print win if win
-			// might add a refresh in print_map
 		}
+	}
+	if (e.state == STATE_LOST)
+	{
+		mvprintw(e.row - 2, (e.col - ft_strlen(MSG_LOST)) / 2, MSG_LOST);
+		e.key = getch();
+		while (is_arrow(e.key))
+			e.key = getch();
 	}
 	// bonus: ask for pseudo and save score
 	return (end(&e, 0));

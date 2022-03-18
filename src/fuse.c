@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:03:22 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 14:52:36 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 15:22:48 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ bool	fuse_up(t_env *e)
 				e->map[row][col] += e->map[row + 1][col];
 				e->map[row + 1][col] = 0;
 				ret = true;
+				if (e->map[row][col] > e->top)
+					e->top = e->map[row][col];
 			}
 		}
 	}
@@ -54,6 +56,8 @@ bool	fuse_down(t_env *e)
 				e->map[row][col] += e->map[row - 1][col];
 				e->map[row - 1][col] = 0;
 				ret = true;
+				if (e->map[row][col] > e->top)
+					e->top = e->map[row][col];
 			}
 		}
 	}
@@ -62,14 +66,52 @@ bool	fuse_down(t_env *e)
 
 bool	fuse_left(t_env *e)
 {
-	if (e->size > 0)
-		return (true);
-	return (false);
+	size_t	row;
+	size_t	col;
+	bool	ret;
+
+	ret = false;
+	row = -1;
+	while (++row < e->size)
+	{
+		col = -1;
+		while (++col < e->size - 1 && e->map[row][col])
+		{
+			if (e->map[row][col] == e->map[row][col + 1])
+			{
+				e->map[row][col] += e->map[row][col + 1];
+				e->map[row][col + 1] = 0;
+				ret = true;
+				if (e->map[row][col] > e->top)
+					e->top = e->map[row][col];
+			}
+		}
+	}
+	return (ret);
 }
 
 bool	fuse_right(t_env *e)
 {
-	if (e->size > 0)
-		return (true);
-	return (false);
+	size_t	row;
+	size_t	col;
+	bool	ret;
+
+	ret = false;
+	row = -1;
+	while (++row < e->size)
+	{
+		col = e->size;
+		while (--col > 0 && e->map[row][col])
+		{
+			if (e->map[row][col] == e->map[row][col - 1])
+			{
+				e->map[row][col] += e->map[row][col - 1];
+				e->map[row][col - 1] = 0;
+				ret = true;
+				if (e->map[row][col] > e->top)
+					e->top = e->map[row][col];
+			}
+		}
+	}
+	return (ret);
 }
