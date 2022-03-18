@@ -3,9 +3,6 @@ colors
 unicode/emoji
 multiple size board
 menu
-highscore // (check if crash when pseudo is empty)
+highscore
 ascii number // pretty sure, won't do
 revert last move // might do
-
-take care:
- - enum for WIN_VALUE
