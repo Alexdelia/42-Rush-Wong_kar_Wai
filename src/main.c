@@ -6,20 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 21:54:56 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 12:46:34 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wkw.h"
-
-static bool	init_colors(void)
-{
-	if (!has_colors())
-		return (!ft_ps("Error: your terminal doesn't support colors\n"));
-	start_color();
-	init_pair(CP_RED, COLOR_RED, COLOR_BLACK);
-	return (true);
-}
 
 static bool	init(t_env *e)
 {
@@ -32,6 +23,7 @@ static bool	init(t_env *e)
 	raw();
 	noecho();
 	keypad(stdscr, TRUE);
+	curs_set(0);
 	if (!init_colors())
 		return (false);
 	if (!resize(e))

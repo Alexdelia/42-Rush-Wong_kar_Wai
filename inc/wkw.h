@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/17 23:52:42 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 13:14:17 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define WKW_H
 
 # include "../libft/inc/libft.h"
+# include "graphic.h"
 
 # include <ncurses.h>
 # include <stdlib.h>
@@ -46,21 +47,6 @@
 # define KEY_R		114
 # define KEY_E		101
 
-# define CP_RED		1
-
-# define SYMBOL_2		"○"
-# define SYMBOL_4		"⊚"
-# define SYMBOL_8		"⊝"
-# define SYMBOL_16		"⊕"
-# define SYMBOL_32		"⊘"
-# define SYMBOL_64		"⊗"
-# define SYMBOL_128		"⊛"
-# define SYMBOL_256		"⬠"
-# define SYMBOL_512		"⬡"
-# define SYMBOL_1024	"⏣"
-# define SYMBOL_2048	"א"
-# define SYMBOL_4096	"∞"
-
 // https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/
 
 // https://www.gnu.org/software/guile-ncurses/manual/html_node/Getting-characters-from-the-keyboard.html
@@ -80,6 +66,10 @@ bool	menu(t_env *e);
 bool	lost(t_env *e);
 int		end(t_env *e, const int ret);
 
+// color
+bool	init_colors(void);
+int		get_color(const int val);
+
 // key handling (key.c)
 bool	key_handle(t_env *e);
 bool	resize(t_env *e);
@@ -97,6 +87,7 @@ bool	move_right(t_env *e);*/
 bool	insert(t_env *e);
 size_t	empty_count(size_t **map, const size_t size);
 void	print_map(t_env *e);
+void	print_symbol(const size_t val);
 void	free_map(t_env *e);
 
 // utils
