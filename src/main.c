@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 17:01:07 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 21:18:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	main(void)
 		return (end(&e, 1));
 	if (!menu(&e)) // choosing size of board
 		return (end(&e, 2));
-	e.score = 0;
 	// clear maybe
 	print_map(&e); // with score and print win if win
 	while (!lost(&e))

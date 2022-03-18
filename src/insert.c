@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:43:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 15:44:01 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 21:18:38 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ bool	insert(t_env *e)
 		val = 4;
 	else
 		val = 2;
-	e->score += val;
 	return (empty_access(e->map, e->size, val,
 			rand() % empty_count(e->map, e->size)));
 	// WARNING: if empty_count is 0: floating exception
