@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:53:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 14:35:53 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:53:14 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,17 @@ bool	key_handle(t_env *e)
 
 	ret = false;
 	if (e->key == KEY_UP || e->key == KEY_W)
+	{
+		// debug
+		//mvprintw(1, 1, "%d, %d, %d", move_up(e), fuse_up(e), move_up(e));
+		//ret = true;
 		ret = move_up(e) | fuse_up(e) | move_up(e);
-		//ret |= fuse_up(e);
-		//ret |= move_up(e);
+	}
 	else if (e->key == KEY_DOWN || e->key == KEY_S)
-		return (move_down(e));
+		ret = move_down(e) | fuse_down(e) | move_down(e);
 	else if (e->key == KEY_LEFT || e->key == KEY_A)
-		return (move_left(e));
+		ret = move_left(e) | fuse_left(e) | move_left(e);
 	else if (e->key == KEY_RIGHT || e->key == KEY_D)
-		return (move_right(e));
+		ret = move_right(e) | fuse_right(e) | move_right(e);
 	return (ret); // return true if move occured
 }

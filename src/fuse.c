@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:03:22 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 14:33:46 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 14:52:36 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	fuse_up(t_env *e)
 	while (++col < e->size)
 	{
 		row = -1;
-		while (++row < e->size - 1)
+		while (++row < e->size - 1 && e->map[row][col])
 		{
 			if (e->map[row][col] == e->map[row + 1][col])
 			{
@@ -38,9 +38,26 @@ bool	fuse_up(t_env *e)
 
 bool	fuse_down(t_env *e)
 {
-	if (e->size > 0)
-		return (true);
-	return (false);
+	size_t	row;
+	size_t	col;
+	bool	ret;
+
+	ret = false;
+	col = -1;
+	while (++col < e->size)
+	{
+		row = e->size;
+		while (--row > 0 && e->map[row][col])
+		{
+			if (e->map[row][col] == e->map[row - 1][col])
+			{
+				e->map[row][col] += e->map[row - 1][col];
+				e->map[row - 1][col] = 0;
+				ret = true;
+			}
+		}
+	}
+	return (ret);
 }
 
 bool	fuse_left(t_env *e)
