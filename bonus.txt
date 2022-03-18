@@ -8,5 +8,4 @@ ascii number // pretty sure, won't do
 revert last move // might do
 
 take care:
- - use cc is compiler
  - enum for WIN_VALUE
