@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 17:00:15 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:00:41 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	save_score(t_env *e)
 	curs_set(1);
 	pmw(e, "do you want to save your score [y/n]");
 	e->key = getch();
-	if (e->key != 'y' && e->key != 'Y')
+	if (e->key != 'y' && e->key != 'Y' && e->key != '\n')
 		return (true);
 	clear();
 	echo();

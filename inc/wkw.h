@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 16:42:38 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:27:54 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@
 # ifndef WIN_VALUE
 #  define WIN_VALUE	2048
 # endif
-
-# define MSG_WON	"YOU WON"
-# define MSG_LOST	"YOU LOST"
 
 # define STATE_NO	0
 # define STATE_WON	1
@@ -68,6 +65,8 @@ typedef struct s_env
 
 // function in process order
 bool	menu(t_env *e);
+bool	choose_play(t_env *e);
+bool	choose_score(t_env *e);
 bool	lost(t_env *e);
 bool	save_score(t_env *e);
 int		end(t_env *e, const int ret);
