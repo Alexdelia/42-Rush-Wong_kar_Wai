@@ -6,19 +6,26 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:13:13 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 09:45:43 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 11:25:37 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRAPHIC_H
 # define GRAPHIC_H
 
-# define MSG_WON		"YOU WON"
-# define MSG_LOST		"YOU LOST"
-# define MSG_PLAY		"PLAY🎮"
-# define MSG_SCORE		"HIGHSCORE"
-# define MSG_EXIT		"EXIT✗"
-# define MSG_CUR_SCORE	"SCORE"
+# ifndef NO_UNICODE
+#  define NO_UNICODE	0
+#  define MSG_PLAY		"PLAY🎮"
+#  define MSG_EXIT		"EXIT✗"
+# else
+#  define MSG_WON		"YOU WON"
+#  define MSG_LOST		"YOU LOST"
+#  define MSG_PLAY		"PLAY"
+#  define MSG_SCORE		"HIGHSCORE"
+#  define MSG_EXIT		"EXIT"
+#  define MSG_CUR_SCORE	"SCORE"
+# endif
+
 
 # define CP_RED			1
 # define CP_GREEN		3

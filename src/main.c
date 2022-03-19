@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:33:57 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 11:26:19 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static bool	init(t_env *e)
 	e->top = 2;
 	if (WIN_VALUE < 0 || !power_of_2(WIN_VALUE))
 		return (!ft_ps("ERROR: WIN_VALUE isn't a power of 2\n"));
-	setlocale(LC_ALL, "");
+	if (!NO_UNICODE)
+		setlocale(LC_ALL, "");
 	srand(time(NULL));
 	initscr();
 	raw();

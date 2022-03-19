@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:29:48 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 10:04:29 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 10:40:12 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,16 @@ int	main(void)
 	int		col;
 	int		key;
 
+	int		x;
+	int		y;
+
 	setlocale(LC_ALL, "");
 
 	initscr();
 	raw(); // cbreak();
 	noecho();
 	keypad(stdscr, TRUE);
+	start_color();
 	// KEY_RESIZE
 
 	key = 0;
@@ -57,15 +61,24 @@ int	main(void)
 		getmaxyx(stdscr, row, col);
 		mvprintw(row / 2, (col - strlen(txt)) / 2, txt);
 		mvprintw(0, 0, "col: %d\nrow: %d\nkey: %d (%c)", col, row, key, (char)key);
-		addstr("\n_ 1 2 3 4_\n");
-		addstr("    ╶┐\n");
-		addstr("    ┌┘\n");
-		addstr("    └╴\n");
-		attrset(A_BOLD);
-		addstr("_ 1 2 3 4_\n");
-		addstr("    ╶┐\n");
-		addstr("    ┌┘\n");
-		addstr("    └╴\n");
+		x = 5;
+		y = 5;
+
+		init_pair(1, COLOR_BLACK, COLOR_GREEN);
+		attrset(COLOR_PAIR(1));
+		mvaddstr(x, y, "_11223344_");
+		mvaddstr(x + 1, y, "    ╶┐    ");
+		mvaddstr(x + 2, y, "    ┌┘    ");
+		mvaddstr(x + 3, y, "    └╴    ");
+		mvaddstr(x + 4, y, "          ");
+		x += 6;
+		init_pair(2, COLOR_GREEN, COLOR_BLACK);
+		attrset(COLOR_PAIR(2));
+		mvaddstr(x, y, "_11223344_");
+		mvaddstr(x + 1, y, " ╶┐┌┐╷╷┌┐ ");
+		mvaddstr(x + 2, y, " ┌┘││└┤├┤ ");
+		mvaddstr(x + 3, y, " └╴└┘ ╵└┘ ");
+		mvaddstr(x + 4, y, "          ");
 		attrset(A_NORMAL);
 
 		// refresh();

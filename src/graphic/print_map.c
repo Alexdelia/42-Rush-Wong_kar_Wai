@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 10:15:58 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 11:27:19 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	print_wall(const size_t size)
 	printw("x\n");
 }
 
-static void	print_char_color(const size_t val)
+static void	print_tile(const size_t val)
 {
 	attrset(COLOR_PAIR(get_color((int)val)));
 
@@ -69,7 +69,7 @@ void	print_map(t_env *e)
 		{
 			//printw("|%ld", e->map[row][col]);
 			printw("|");
-			print_char_color(e->map[row][col]);
+			print_tile(e->map[row][col]);
 			col++;
 		}
 		printw("|\n");

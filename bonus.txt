@@ -6,3 +6,7 @@ menu
 highscore
 ascii number // pretty sure, won't do
 revert last move // might do
+
+take care:
+ - rule for unicode
+ - test resize in game for 5x5
