@@ -6,11 +6,19 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:53:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 16:02:58 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:24:20 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wkw.h"
+
+static void	resize_frame(t_env *e)
+{
+	mvprintw(0, 0, "⌜");
+	mvprintw(0, e->col - 1, "⌝");
+	mvprintw(e->row - 1, 0, "⌞");
+	mvprintw(e->row - 1, e->col - 1, "⌟");
+}
 
 bool	resize(t_env *e)
 {
@@ -19,10 +27,8 @@ bool	resize(t_env *e)
 	while (!valid_size(e))
 	{
 		clear();
-		mvprintw(0, 0, "⌜");
-		mvprintw(0, e->col - 1, "⌝");
-		mvprintw(e->row - 1, 0, "⌞");
-		mvprintw(e->row - 1, e->col - 1, "⌟");
+		if (!NO_UNICODE)
+			resize_frame(e);
 		pmw(e, "too small");
 		refresh();
 		e->key = 0;
@@ -45,12 +51,7 @@ bool	key_handle(t_env *e)
 
 	ret = false;
 	if (e->key == KEY_UP || e->key == 'w')
-	{
-		// debug
-		//mvprintw(1, 1, "%d, %d, %d", move_up(e), fuse_up(e), move_up(e));
-		//ret = true;
 		ret = move_up(e) | fuse_up(e) | move_up(e);
-	}
 	else if (e->key == KEY_DOWN || e->key == 's')
 		ret = move_down(e) | fuse_down(e) | move_down(e);
 	else if (e->key == KEY_LEFT || e->key == 'a')
