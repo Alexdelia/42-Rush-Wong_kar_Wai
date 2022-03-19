@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 09:45:52 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 11:47:54 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:06:19 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_val_2(const int row, const int col)
 {
-	mvaddstr(row, col, "_11223344_");
+	mvaddstr(row, col, "          ");
 	mvaddstr(row + 1, col, "    ╶┐    ");
 	mvaddstr(row + 2, col, "    ┌┘    ");
 	mvaddstr(row + 3, col, "    └╴    ");

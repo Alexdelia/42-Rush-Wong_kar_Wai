@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:26:37 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:57:14 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	choose_score(t_env *e)
 	size_t	sort[MAX_READ_SCORE + 1];
 
 	clear();
+	curs_set(0);
 	if (!NO_UNICODE)
 		print_frame_score(e, CP_SCORE);
 	attrset(A_BOLD | A_UNDERLINE);
@@ -104,4 +105,5 @@ void	choose_score(t_env *e)
 		resize(e);
 		choose_score(e);
 	}
+	curs_set(1);
 }

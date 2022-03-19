@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:04:56 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:54:07 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ enum e_const
 # define STATE_LOST	2
 
 # define MIN_ROW	12
-# define MIN_COL	30
+# define MIN_COL	33
 
 # define MIN_BOARD	3
 # define MAX_BOARD	5

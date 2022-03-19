@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 23:39:33 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 10:16:13 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:53:23 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,23 @@ void	print_score(t_env *e, t_score *s, const size_t *sort)
 	attrset(A_BOLD);
 	while (i < (size_t)e->row - 7 && i < MAX_READ_SCORE && s[sort[i]].score > 0)
 	{
-		if (i == 0)
-			mvaddstr(3, 6, "🏆");
-		mvaddstr(3 + i, 8, s[sort[i]].pseudo);
+		if (i == 0 && !NO_UNICODE)
+			mvaddstr(3, 5, "🏆");
+		if (!s[sort[i]].pseudo[0])
+		{
+			attrset(A_ITALIC);
+			mvaddstr(3 + i, 7, "[anonymous]");
+			attrset(A_BOLD);
+		}
+		else
+			mvaddstr(3 + i, 7, s[sort[i]].pseudo);
 		mvprintw(3 + i, (e->col - ft_stlen(s[sort[i]].score)) / 2 + 3,
 			"%ld", s[sort[i]].score);
-		attron(COLOR_PAIR(get_color(s[sort[i]].top)));
-		mvprintw(3 + i, e->col - 9, "%ld", s[sort[i]].top);
-		attroff(COLOR_PAIR(get_color(s[sort[i]].top)));
+		attron(A_REVERSE | COLOR_PAIR(get_color(s[sort[i]].top)));
+		mvaddstr(3 + i, (e->col - 10), "      ");
+		mvprintw(3 + i, (5 - ft_stlen(s[sort[i]].top)) / 2 + (e->col - 9),
+				"%ld", s[sort[i]].top);
+		attroff(A_REVERSE | COLOR_PAIR(get_color(s[sort[i]].top)));
 		i++;
 	}
 	attrset(A_NORMAL);
