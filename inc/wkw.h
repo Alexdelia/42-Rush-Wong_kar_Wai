@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 12:41:34 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:04:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ enum e_const
 
 # define MIN_BOARD	3
 # define MAX_BOARD	5
+
+# define TILE_ROW	5
+# define TILE_COL	10
 
 # ifndef SCORE_PATH
 #  define SCORE_PATH	"./score.txt"

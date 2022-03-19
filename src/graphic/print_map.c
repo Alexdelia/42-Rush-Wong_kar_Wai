@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 13:26:19 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:09:51 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,8 @@ static void	print_tile(const size_t val, const size_t row, const size_t col)
 		mvaddstr(row + 2, col, "          ");
 		mvaddstr(row + 3, col, "          ");
 		mvaddstr(row + 4, col, "          ");
-		if (val > 0 && val < 128)
-			mvprintw(row + 2, (9 + ft_stlen(val)) / 2 + col - 1, "%ld", val);
-		else if (val)
-			mvprintw(row + 2, (9 + ft_stlen(val)) / 2 + col - 2, "%ld", val);
+		if (val)
+			mvprintw(row + 2, (TILE_COL - ft_stlen(val)) / 2 + col, "%ld", val);
 	}
 	else
 		print_ascii(val, (int)row, (int)col);
