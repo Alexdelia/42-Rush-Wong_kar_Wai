@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:54:07 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:27:44 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,19 @@ enum e_const
 
 // https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/
 
-// https://www.gnu.org/software/guile-ncurses/manual/html_node/Getting-characters-from-the-keyboard.html
-
 typedef struct s_env
 {
+	int		row;
+	int		col;
+	int		key;
+	int		state;
+	size_t	**map;
+	size_t	size;
+	size_t	score;
+	size_t	top;
+}			t_env;
+
+/*
 	int		row;	// window row
 	int		col;	// window column
 	int		key;	// key pressed
@@ -71,7 +80,7 @@ typedef struct s_env
 	size_t	size;	// size of map (4x4, 5x5, ...)
 	size_t	score;
 	size_t	top;	// biggest value on board
-}			t_env;
+*/
 
 # define MAX_READ_SCORE	42
 

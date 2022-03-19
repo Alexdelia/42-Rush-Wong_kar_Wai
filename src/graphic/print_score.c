@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 23:39:33 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:53:23 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:22:22 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@ void	print_frame_score(t_env *e, const int color)
 	attrset(A_NORMAL);
 }
 
+static void	print_pseudo(t_env *e,
+		t_score *s, const size_t *sort, const size_t i)
+{
+	if (i == 0 && !NO_UNICODE)
+		mvaddstr(3, 5, "🏆");
+	if (!s[sort[i]].pseudo[0])
+	{
+		attrset(A_ITALIC);
+		mvaddstr(3 + i, 7, "[anonymous]");
+		attrset(A_BOLD);
+	}
+	else
+		mvaddstr(3 + i, 7, s[sort[i]].pseudo);
+}
+
 void	print_score(t_env *e, t_score *s, const size_t *sort)
 {
 	size_t	i;
@@ -60,22 +75,13 @@ void	print_score(t_env *e, t_score *s, const size_t *sort)
 	attrset(A_BOLD);
 	while (i < (size_t)e->row - 7 && i < MAX_READ_SCORE && s[sort[i]].score > 0)
 	{
-		if (i == 0 && !NO_UNICODE)
-			mvaddstr(3, 5, "🏆");
-		if (!s[sort[i]].pseudo[0])
-		{
-			attrset(A_ITALIC);
-			mvaddstr(3 + i, 7, "[anonymous]");
-			attrset(A_BOLD);
-		}
-		else
-			mvaddstr(3 + i, 7, s[sort[i]].pseudo);
+		print_pseudo(e, s, sort, i);
 		mvprintw(3 + i, (e->col - ft_stlen(s[sort[i]].score)) / 2 + 3,
 			"%ld", s[sort[i]].score);
 		attron(A_REVERSE | COLOR_PAIR(get_color(s[sort[i]].top)));
 		mvaddstr(3 + i, (e->col - 10), "      ");
 		mvprintw(3 + i, (5 - ft_stlen(s[sort[i]].top)) / 2 + (e->col - 9),
-				"%ld", s[sort[i]].top);
+			"%ld", s[sort[i]].top);
 		attroff(A_REVERSE | COLOR_PAIR(get_color(s[sort[i]].top)));
 		i++;
 	}

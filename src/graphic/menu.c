@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:19:51 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:26:07 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:19:08 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ bool	choose_play(t_env *e)
 	while (e->size < MIN_BOARD || e->size > MAX_BOARD)
 	{
 		if (e->size != 0)
-			mvprintw(e->row - 2, 2,
-				"size of board should be between %d and %d",
-				MIN_BOARD, MAX_BOARD); //
-		pmw(e, "please enter size of board: ");
+			mvprintw(e->row - 2, 2, "MAX: %d  MIN: %d", MIN_BOARD, MAX_BOARD);
+		pmw(e, "board size: ");
 		e->key = getch();
 		if (is_exit(e->key))
 			return (false);

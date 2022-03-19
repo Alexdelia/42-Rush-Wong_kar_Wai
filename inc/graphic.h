@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:13:13 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:20:50 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:16:10 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 #  define MSG_EXIT		"EXIT "
 # endif
 
-#  define MSG_WON		"YOU WON"
-#  define MSG_LOST		"YOU LOST"
-#  define MSG_SCORE		"HIGHSCORE"
-#  define MSG_CUR_SCORE	"SCORE"
+# define MSG_WON		"YOU WON"
+# define MSG_LOST		"YOU LOST"
+# define MSG_SCORE		"HIGHSCORE"
+# define MSG_CUR_SCORE	"SCORE"
 
 # define CP_RED			1
 # define CP_GREEN		3

@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:35:40 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:23:04 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,11 @@ bool	play(t_env *e)
 		}
 		if (is_exit(e->key))
 			break ;
-		if (key_handle(e)) // handle arrow
+		if (key_handle(e))
 		{
-			// only if a move occurred
 			if (!insert(e))
 				return (false);
-			// clear maybe
-			print_map(e); // with score and print win if win
+			print_map(e);
 		}
 	}
 	return (true);
@@ -70,12 +68,11 @@ int	main(void)
 
 	if (!init(&e))
 		return (end(&e, 1));
-	if (!menu(&e)) // choosing size of board
+	if (!menu(&e))
 		return (end(&e, 2));
-	// clear maybe
 	resize(&e);
 	clear();
-	print_map(&e); // with score and print win if win
+	print_map(&e);
 	if (!play(&e))
 		return (end(&e, 4));
 	if (e.state == STATE_LOST)
@@ -85,7 +82,6 @@ int	main(void)
 		while (is_arrow(e.key))
 			e.key = getch();
 	}
-	// bonus: ask for pseudo and save score
 	if (!save_score(&e))
 		return (end(&e, 5));
 	return (end(&e, 0));

@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:32:17 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:25:26 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:17:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,8 @@ void	print_frame(t_env *e, const int color)
 	attrset(A_NORMAL);
 }
 
-void	print_menu(t_env *e)
+static void	print_menu_key(t_env *e)
 {
-	if (!NO_UNICODE)
-		print_frame(e, CP_MENU);
-	attrset(A_BOLD | COLOR_PAIR(CP_PLAY));
-	mvprintw((e->row - 1) / 2 - 1,
-		(e->col - ft_strlen(MSG_PLAY)) / 2, MSG_PLAY);
-	attrset(A_BOLD | COLOR_PAIR(CP_SCORE));
-	mvprintw((e->row - 1) / 2,
-		(e->col - ft_strlen(MSG_SCORE)) / 2 - 1, MSG_SCORE);
-	attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
-	mvprintw((e->row - 1) / 2 + 1,
-		(e->col - ft_strlen(MSG_EXIT)) / 2, MSG_EXIT);
 	move((e->row - 1) / 2 + 2, (e->col - ft_strlen("[p/s/q]")) / 2 - 1);
 	attrset(A_NORMAL);
 	addch('[');
@@ -65,4 +54,20 @@ void	print_menu(t_env *e)
 	addch('q');
 	attrset(A_NORMAL);
 	addch(']');
+}
+
+void	print_menu(t_env *e)
+{
+	if (!NO_UNICODE)
+		print_frame(e, CP_MENU);
+	attrset(A_BOLD | COLOR_PAIR(CP_PLAY));
+	mvprintw((e->row - 1) / 2 - 1,
+		(e->col - ft_strlen(MSG_PLAY)) / 2, MSG_PLAY);
+	attrset(A_BOLD | COLOR_PAIR(CP_SCORE));
+	mvprintw((e->row - 1) / 2,
+		(e->col - ft_strlen(MSG_SCORE)) / 2 - 1, MSG_SCORE);
+	attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
+	mvprintw((e->row - 1) / 2 + 1,
+		(e->col - ft_strlen(MSG_EXIT)) / 2, MSG_EXIT);
+	print_menu_key(e);
 }

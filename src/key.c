@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:53:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:24:20 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:23:38 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ bool	resize(t_env *e)
 		getmaxyx(stdscr, e->row, e->col);
 	}
 	attrset(A_NORMAL);
-	// might need to show the board again
 	return (true);
 }
 
@@ -58,5 +57,5 @@ bool	key_handle(t_env *e)
 		ret = move_left(e) | fuse_left(e) | move_left(e);
 	else if (e->key == KEY_RIGHT || e->key == 'd')
 		ret = move_right(e) | fuse_right(e) | move_right(e);
-	return (ret); // return true if move occured
+	return (ret);
 }

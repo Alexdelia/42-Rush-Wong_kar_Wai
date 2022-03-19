@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:43:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:36:48 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:23:24 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,10 @@ bool	insert(t_env *e)
 {
 	size_t	val;
 
-	//if (rand() % 4 == 0) // 1/4 that val=4 and 3/4 that val=2
 	if (rand() % CHANCE_4 == 0)
 		val = 4;
 	else
 		val = 2;
 	return (empty_access(e->map, e->size, val,
 			rand() % empty_count(e->map, e->size)));
-	// WARNING: if empty_count is 0: floating exception
-	// I won't put a protection yet
-	// the code should not go into insert if empty_count == 0
-	// So will make sure it doesn't happend
 }

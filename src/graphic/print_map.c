@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 15:09:37 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:20:35 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ static void	print_board(const int row, const int col, const size_t size)
 static void	print_tile(const size_t val, const size_t row, const size_t col)
 {
 	attrset(COLOR_PAIR(get_color((int)val)));
-
-	// debug
-	//attrset(COLOR_PAIR(CP_RED));
-	//printw("%d", get_color((int)val));
-
 	if (NO_UNICODE || val == 0 || val > 4096)
 	{
 		mvaddstr(row, col, "          ");
@@ -87,30 +82,22 @@ void	print_map(t_env *e)
 	size_t	starting_row;
 	size_t	starting_col;
 
-	// need to calc starting row and col
-	// need to find how much to move row and col each tile
 	find_starting_row_col(e, &starting_row, &starting_col);
 	print_map_score(e);
 	print_board(starting_row - 1, starting_col, e->size);
-	//print_board(0, 0, e->size);
 	row = 0;
 	while (row < e->size)
 	{
 		col = 0;
 		while (col < e->size)
 		{
-			//printw("|%ld", e->map[row][col]);
-			//printw("|");
 			print_tile(e->map[row][col],
 				row * (TILE_ROW + 1) + starting_row,
 				col * (TILE_COL + 2) + 2 + starting_col);
 			col++;
 		}
-		//printw("|\n");
 		row++;
 	}
-	//print_wall(e->size * 2 - 1);
 	if (e->state == STATE_NO && e->top == WIN_VALUE)
 		print_win(e);
-	//refresh();
 }
