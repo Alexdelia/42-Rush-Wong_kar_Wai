@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 11:26:19 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:35:40 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ bool	play(t_env *e)
 		{
 			e->key = getch();
 			if (e->key == KEY_RESIZE)
+			{
 				resize(e);
+				clear();
+				print_map(e);
+			}
 		}
 		if (is_exit(e->key))
 			break ;
@@ -69,6 +73,8 @@ int	main(void)
 	if (!menu(&e)) // choosing size of board
 		return (end(&e, 2));
 	// clear maybe
+	resize(&e);
+	clear();
 	print_map(&e); // with score and print win if win
 	if (!play(&e))
 		return (end(&e, 4));

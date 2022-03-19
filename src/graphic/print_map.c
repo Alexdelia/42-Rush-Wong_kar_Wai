@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:19:13 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:38:23 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	print_map(t_env *e)
 	// need to find how much to move row and col each tile
 	find_starting_row_col(e, &starting_row, &starting_col);
 	print_map_score(e);
-	print_board(starting_row, starting_col, e->size);
+	print_board(starting_row - 1, starting_col, e->size);
 	//print_board(0, 0, e->size);
 	row = 0;
 	while (row < e->size)
@@ -100,7 +100,7 @@ void	print_map(t_env *e)
 			//printw("|%ld", e->map[row][col]);
 			//printw("|");
 			print_tile(e->map[row][col],
-				row * (TILE_ROW + 1) + 1 + starting_row,
+				row * (TILE_ROW + 1) + starting_row,
 				col * (TILE_COL + 2) + 2 + starting_col);
 			col++;
 		}

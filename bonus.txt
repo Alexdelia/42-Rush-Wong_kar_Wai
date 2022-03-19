@@ -4,9 +4,9 @@ unicode/emoji
 multiple size board
 menu
 highscore
-ascii number // pretty sure, won't do
-revert last move // might do
+ascii number
+revert last move // won't do
 
 take care:
- - rule for unicode
- - test resize in game for 5x5
+ - rule for unicode // done
+ - test resize in game for 5x5 // done
