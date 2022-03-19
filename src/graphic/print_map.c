@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:38:23 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:09:37 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ static void	print_win(t_env *e)
 
 static void	print_map_score(t_env *e)
 {
-	mvprintw(1, (e->col - (ft_strlen(MSG_CUR_SCORE) + 1
+	attrset(A_BOLD | COLOR_PAIR(get_color(e->top)));
+	mvprintw(1, (e->col - (ft_strlen(MSG_CUR_SCORE) + 3
 				+ ft_stlen(e->score))) / 2,
-		"%s %ld\n", MSG_CUR_SCORE, e->score);
+		" %s %ld ", MSG_CUR_SCORE, e->score);
+	attrset(A_NORMAL);
 }
 
 static void	print_board(const int row, const int col, const size_t size)
