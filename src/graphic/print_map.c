@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 14:09:51 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 14:19:13 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ static void	print_board(const int row, const int col, const size_t size)
 	y = -1;
 	while (++y < size + 1)
 	{
-		move(row + (y * 6), col);
+		move(row + (y * (TILE_ROW + 1)), col);
 		x = -1;
-		while (++x < size * 12 + 2)
+		while (++x < size * (TILE_COL + 2))
 			addch(' ');
 	}
 	y = -1;
 	while (++y < size + 1)
 	{
 		x = -1;
-		while (++x < size * 6)
-			mvaddstr(row + x, col + (y * 12), "  ");
+		while (++x < size * (TILE_ROW + 1) + 1)
+			mvaddstr(row + x, col + (y * (TILE_COL + 2)), "  ");
 	}
 	attrset(A_NORMAL);
 }
@@ -100,7 +100,8 @@ void	print_map(t_env *e)
 			//printw("|%ld", e->map[row][col]);
 			//printw("|");
 			print_tile(e->map[row][col],
-				row * 6 + 1 + starting_row, col * 12 + 2 + starting_col);
+				row * (TILE_ROW + 1) + 1 + starting_row,
+				col * (TILE_COL + 2) + 2 + starting_col);
 			col++;
 		}
 		//printw("|\n");
