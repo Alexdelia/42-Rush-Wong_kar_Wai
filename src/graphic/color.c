@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 12:42:03 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:02:13 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 10:15:43 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/wkw.h"
+#include "../../inc/wkw.h"
 
 int	get_color(const int val)
 {

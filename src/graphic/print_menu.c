@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:32:17 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 19:35:22 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 10:16:06 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/wkw.h"
+#include "../../inc/wkw.h"
 
 void	print_frame(t_env *e, const int color)
 {

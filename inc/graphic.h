@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:13:13 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 17:42:21 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 09:45:43 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,21 @@
 # define COLOR_1024		216
 # define COLOR_2048		217
 # define COLOR_4096		218
+
+/*
+# define COLOR_B_0		219
+# define COLOR_B_2		220
+# define COLOR_B_4		221
+# define COLOR_B_8		222
+# define COLOR_B_16		223
+# define COLOR_B_32		224
+# define COLOR_B_64		225
+# define COLOR_B_128	226
+# define COLOR_B_256	227
+# define COLOR_B_512	228
+# define COLOR_B_1024	229
+# define COLOR_B_2048	230
+# define COLOR_B_4096	231
+*/
 
 #endif

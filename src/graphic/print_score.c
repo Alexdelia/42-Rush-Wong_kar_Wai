@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 23:39:33 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:54:04 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 10:16:13 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/wkw.h"
+#include "../../inc/wkw.h"
 
 static void	print_frame_score_end(t_env *e, size_t i)
 {

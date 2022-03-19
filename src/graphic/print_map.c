@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:43:54 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 10:15:58 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/wkw.h"
+#include "../../inc/wkw.h"
 
 static void	print_win(t_env *e)
 {
