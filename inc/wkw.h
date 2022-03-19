@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 11:12:09 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 12:41:34 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	print_score(t_env *e, t_score *s, const size_t *sort);
 // color
 bool	init_colors(void);
 int		get_color(const int val);
+void	main_pairs(void);
 
 // key handling (key.c)
 bool	key_handle(t_env *e);
@@ -120,7 +121,7 @@ bool	fuse_right(t_env *e);
 bool	insert(t_env *e);
 size_t	empty_count(size_t **map, const size_t size);
 void	print_map(t_env *e);
-void	print_symbol(const size_t val);
+void	print_ascii(const size_t val, const int row, const int col);
 void	free_map(t_env *e);
 
 // utils
@@ -133,5 +134,6 @@ bool	power_of_2(const size_t n);
 size_t	ft_atost(char *str);
 char	*ft_sttoa(size_t n);
 void	ft_bzero_st(size_t *s, size_t n);
+void	find_starting_row_col(t_env *e, size_t *row, size_t *col);
 
 #endif

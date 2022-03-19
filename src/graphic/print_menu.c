@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:32:17 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 10:16:06 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 12:45:07 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	print_menu(t_env *e)
 	attrset(A_BOLD | COLOR_PAIR(CP_PLAY));
 	mvprintw((e->row - 1) / 2 - 1,
 		(e->col - ft_strlen(MSG_PLAY)) / 2, MSG_PLAY);
-	attrset(A_BOLD | COLOR_PAIR(get_color(2048)));
+	attrset(A_BOLD | COLOR_PAIR(CP_SCORE));
 	mvprintw((e->row - 1) / 2,
 		(e->col - ft_strlen(MSG_SCORE)) / 2 - 1, MSG_SCORE);
-	attrset(A_BOLD | COLOR_PAIR(get_color(64)));
+	attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
 	mvprintw((e->row - 1) / 2 + 1,
 		(e->col - ft_strlen(MSG_EXIT)) / 2, MSG_EXIT);
 	move((e->row - 1) / 2 + 2, (e->col - ft_strlen("[p/s/q]")) / 2 - 1);
@@ -56,11 +56,11 @@ void	print_menu(t_env *e)
 	addch('p');
 	attrset(A_NORMAL);
 	addch('/');
-	attrset(COLOR_PAIR(get_color(2048)));
+	attrset(COLOR_PAIR(CP_SCORE));
 	addch('s');
 	attrset(A_NORMAL);
 	addch('/');
-	attrset(COLOR_PAIR(get_color(64)));
+	attrset(COLOR_PAIR(CP_EXIT));
 	addch('q');
 	attrset(A_NORMAL);
 	addch(']');

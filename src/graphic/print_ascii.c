@@ -1,57 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_symbol.c                                     :+:      :+:    :+:   */
+/*   print_ascii.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:07:28 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 13:09:39 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 12:27:04 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/wkw.h"
 
-static void	print_symbol_small(const size_t val)
+static void	print_ascii_small(const size_t val, const int row, const int col)
 {
-	if (val == 0)
-		printw(SYMBOL_0);
-	else if (val == 2)
-		printw(SYMBOL_2);
+	if (val == 2)
+		print_val_2(row, col);
 	else if (val == 4)
-		printw(SYMBOL_4);
+		print_val_4(row, col);
 	else if (val == 8)
-		printw(SYMBOL_8);
+		print_val_8(row, col);
 	else if (val == 16)
-		printw(SYMBOL_16);
+		print_val_16(row, col);
 	else if (val == 32)
-		printw(SYMBOL_32);
+		print_val_32(row, col);
 	else
-		printw(SYMBOL_64);
+		print_val_64(row, col);
 }
 
-static void	print_symbol_big(const size_t val)
+static void	print_ascii_big(const size_t val, const int row, const int col)
 {
 	if (val == 128)
-		printw(SYMBOL_128);
+		print_val_128(row, col);
 	else if (val == 256)
-		printw(SYMBOL_256);
+		print_val_256(row, col);
 	else if (val == 512)
-		printw(SYMBOL_512);
+		print_val_512(row, col);
 	else if (val == 1024)
-		printw(SYMBOL_1024);
+		print_val_1024(row, col);
 	else if (val == 2048)
-		printw(SYMBOL_2048);
-	else if (val == 4096)
-		printw(SYMBOL_4096);
+		print_val_2048(row, col);
 	else
-		printw("%ld", val);
+		print_val_4096(row, col);
 }
 
-void	print_symbol(const size_t val)
+void	print_ascii(const size_t val, const int row, const int col)
 {
 	if (val <= 64)
-		print_symbol_small(val);
+		print_ascii_small(val, row, col);
 	else
-		print_symbol_big(val);
+		print_ascii_big(val, row, col);
 }

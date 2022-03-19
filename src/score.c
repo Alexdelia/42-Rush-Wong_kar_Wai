@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 23:51:49 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/19 12:45:35 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	choose_score(t_env *e)
 	size_t	sort[MAX_READ_SCORE + 1];
 
 	clear();
-	print_frame_score(e, get_color(2048));
+	print_frame_score(e, CP_SCORE);
 	attrset(A_BOLD | A_UNDERLINE);
 	mvprintw(2, 7, "PSEUDO");
 	mvprintw(2, (e->col - ft_strlen("SCORE")) / 2 + 3, "SCORE");
