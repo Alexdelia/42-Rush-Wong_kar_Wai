@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:13:13 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 15:16:10 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 12:29:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@
 # define CP_BOARD		7
 # define CP_SCORE		9
 # define CP_EXIT		10
-
-# define SYMBOL_0		" "
-# define SYMBOL_2		"○"
-# define SYMBOL_4		"⊚"
-# define SYMBOL_8		"⊝"
-# define SYMBOL_16		"⊕"
-# define SYMBOL_32		"⊘"
-# define SYMBOL_64		"⊗"
-# define SYMBOL_128		"⊛"
-# define SYMBOL_256		"⬠"
-# define SYMBOL_512		"⬡"
-# define SYMBOL_1024	"⏣"
-# define SYMBOL_2048	"א"
-# define SYMBOL_4096	"∞"
 
 # define COLOR_F_0		206
 # define COLOR_F_2		207

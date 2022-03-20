@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:07:23 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/18 15:10:17 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 12:37:24 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ bool	power_of_2(const size_t n)
 
 	i = 2;
 	while (i < n && i < LONG_MAX)
-		i *= 2;
+		i <<= 1;
 	return (i == n);
 }

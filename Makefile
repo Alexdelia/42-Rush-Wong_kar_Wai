@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/19 14:29:15 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/20 13:01:22 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ NCFLAGS +=	$(shell ncursesw5-config --cflags --libs)
 # **************************************************************************** #
 #	MAKEFILE	#
 
-MAKEFLAGS += --silent
+#MAKEFLAGS += --silent
+
+-include $(OBJS:.o=.d)
 
 SHELL := bash
 
@@ -83,6 +85,11 @@ endef
 # *************************************************************************** #
 #	RULES	#
 
+$(OBJSPATH)%.o: $(SRCSPATH)%.c
+	@mkdir -p $(dir $@) # 2> /dev/null || true
+	$(CC) $(CFLAGS) -MMD -MP -I$(INC) -c $< -o $@
+	@printf "$(B)$(GRE)█$(D)"
+
 all:		launch $(NAME)
 	@printf "\n$(B)$(MAG)$(NAME) compiled$(D)\n"
 
@@ -92,26 +99,21 @@ test:		all
 launch:
 	$(call progress_bar)
 
-$(NAME):	$(OBJS) lib
+$(NAME):	$(OBJS) $(LIBNAME)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBNAME) -o $(NAME) $(NCFLAGS)
 
-$(OBJSPATH)%.o: $(SRCSPATH)%.c
-	@mkdir -p $(dir $@) # 2> /dev/null || true
-	$(CC) $(CFLAGS) -I$(INC) -c $< -o $@
-	@printf "$(B)$(GRE)█$(D)"
-
-lib:
+$(LIBNAME):
 	@printf "$(D)$(B)$(BLU)\n$(NAME) objects compiled\n\n$(D)"
-	@make -C $(LIBPATH)
+	@$(MAKE) -C $(LIBPATH)
 	
 clean:
 	@$(RM) $(OBJSPATH)
-	@make clean -C $(LIBPATH)
+	@$(MAKE) clean -C $(LIBPATH)
 
 fclean:
 	@$(RM) $(OBJSPATH)
 	@$(RM) $(NAME)
-	@make fclean -C $(LIBPATH)
+	@$(MAKE) fclean -C $(LIBPATH)
 
 re:			fclean all
 
