@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 23:39:33 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:14:17 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:46:04 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	print_frame_score(t_env *e, const int color)
 {
 	size_t	i;
 
+	if (NO_UNICODE)
+		return ;
 	attrset(A_BOLD | COLOR_PAIR(color));
 	move(0, 2);
 	i = 0;

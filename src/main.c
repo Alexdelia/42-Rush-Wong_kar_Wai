@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 14:26:30 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:41:43 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,20 @@ static bool	init(t_env *e)
 	return (true);
 }
 
-bool	play(t_env *e)
+static void	print_lost(t_env *e)
+{
+	attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
+	if ((size_t)e->col > ft_strlen(MSG_LOST) || NO_UNICODE)
+		mvprintw(e->row - 2, (e->col - ft_strlen(MSG_LOST)) / 2, MSG_LOST);
+	else
+		mvprintw(e->row - 2, 0, &MSG_LOST[8]);
+	attrset(A_NORMAL);
+	e->key = getch();
+	while (is_arrow(e->key))
+		e->key = getch();
+}
+
+static bool	play(t_env *e)
 {
 	while (!lost(e))
 	{
@@ -78,17 +91,7 @@ int	main(void)
 	if (!play(&e))
 		return (end(&e, 4));
 	if (e.state == STATE_LOST)
-	{
-		attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
-		if ((size_t)e.col > ft_strlen(MSG_LOST) || NO_UNICODE)
-			mvprintw(e.row - 2, (e.col - ft_strlen(MSG_LOST)) / 2, MSG_LOST);
-		else
-			mvprintw(e.row - 2, 0, &MSG_LOST[8]);
-		attrset(A_NORMAL);
-		e.key = getch();
-		while (is_arrow(e.key))
-			e.key = getch();
-	}
+		print_lost(&e);
 	if (e.key != KEY_RESIZE && !save_score(&e))
 		return (end(&e, 5));
 	return (end(&e, 0));

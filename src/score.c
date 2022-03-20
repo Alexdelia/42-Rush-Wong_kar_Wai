@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 14:07:36 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:47:59 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,12 @@ bool	save_score(t_env *e)
 	print_frame(e, CP_SCORE);
 	curs_set(1);
 	attrset(A_BOLD | COLOR_PAIR(CP_SCORE));
-	mvprintw(e->row / 2 - 3, (e->col - (ft_strlen(MSG_CUR_SCORE) + 1 + ft_stlen(e->score))) / 2,
+	mvprintw(e->row / 2 - 3,
+		(e->col - (ft_strlen(MSG_CUR_SCORE) + 1 + ft_stlen(e->score))) / 2,
 		"%s %ld", MSG_CUR_SCORE, e->score);
 	pmw(e, "do you want to save your score");
 	attrset(A_BOLD);
-	mvaddstr(e->row / 2 + 1, (e->col - 5)/ 2, "[y/n]");
+	mvaddstr(e->row / 2 + 1, (e->col - 5) / 2, "[y/n]");
 	move(e->row / 2 + 2, e->col / 2 - 1);
 	attrset(A_NORMAL);
 	e->key = getch();
@@ -88,6 +89,15 @@ bool	save_score(t_env *e)
 	return (write_score(e, pseudo, fd));
 }
 
+static void	print_header_score(t_env *e)
+{
+	attrset(A_BOLD | A_UNDERLINE);
+	mvprintw(2, 7, "PSEUDO");
+	mvprintw(2, (e->col - ft_strlen("SCORE")) / 2 + 3, "SCORE");
+	mvprintw(2, e->col - 8, "TOP");
+	attrset(A_NORMAL);
+}
+
 bool	choose_score(t_env *e)
 {
 	t_score	s[MAX_READ_SCORE + 1];
@@ -95,13 +105,8 @@ bool	choose_score(t_env *e)
 
 	clear();
 	curs_set(0);
-	if (!NO_UNICODE)
-		print_frame_score(e, CP_SCORE);
-	attrset(A_BOLD | A_UNDERLINE);
-	mvprintw(2, 7, "PSEUDO");
-	mvprintw(2, (e->col - ft_strlen("SCORE")) / 2 + 3, "SCORE");
-	mvprintw(2, e->col - 8, "TOP");
-	attrset(A_NORMAL);
+	print_frame_score(e, CP_SCORE);
+	print_header_score(e);
 	if (!read_score(s))
 		pmw(e, "NO SCORE");
 	else
