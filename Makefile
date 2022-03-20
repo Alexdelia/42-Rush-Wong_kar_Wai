@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/20 13:01:22 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/20 14:29:31 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,6 @@ NCFLAGS +=	$(shell ncursesw5-config --cflags --libs)
 #	MAKEFILE	#
 
 #MAKEFLAGS += --silent
-
--include $(OBJS:.o=.d)
 
 SHELL := bash
 
@@ -116,6 +114,8 @@ fclean:
 	@$(MAKE) fclean -C $(LIBPATH)
 
 re:			fclean all
+
+-include $(OBJS:.o=.d)
 
 .PHONY: all clean fclean re launch lib test
 

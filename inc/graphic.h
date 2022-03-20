@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:13:13 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:58:15 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:17:03 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #  define MSG_PLAY		"PLAY🎮"
 #  define MSG_EXIT		"EXIT✗"
 #  define MSG_WON		"🎉 WON 🎉"
-#  define MSG_LOST		"( ཀ ʖ̯ ཀ)  GAMEOVER  ლ(ಠ_ಠლ)"
+#  define MSG_LOST		"               ( ཀ ʖ̯ ཀ)  GAMEOVER  ლ(ಠ_ಠლ)"
 # else
 #  define MSG_PLAY		"PLAY "
 #  define MSG_EXIT		"EXIT "

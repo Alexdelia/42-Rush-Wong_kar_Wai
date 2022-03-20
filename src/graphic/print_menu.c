@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 19:32:17 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 15:17:56 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:12:37 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	print_frame(t_env *e, const int color)
 {
 	size_t	i;
 
+	if (NO_UNICODE)
+		return ;
 	attrset(COLOR_PAIR(color));
 	addstr("╔");
 	i = 0;
@@ -58,8 +60,7 @@ static void	print_menu_key(t_env *e)
 
 void	print_menu(t_env *e)
 {
-	if (!NO_UNICODE)
-		print_frame(e, CP_MENU);
+	print_frame(e, CP_MENU);
 	attrset(A_BOLD | COLOR_PAIR(CP_PLAY));
 	mvprintw((e->row - 1) / 2 - 1,
 		(e->col - ft_strlen(MSG_PLAY)) / 2, MSG_PLAY);

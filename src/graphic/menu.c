@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:19:51 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:36:40 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:12:55 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ bool	choose_play(t_env *e)
 	while (e->size < MIN_BOARD || e->size > MAX_BOARD)
 	{
 		clear();
-		if (!NO_UNICODE)
-			print_frame(e, CP_PLAY);
+		print_frame(e, CP_PLAY);
 		if (e->size != 0)
 		{
 			attrset(A_BOLD | COLOR_PAIR(CP_EXIT));

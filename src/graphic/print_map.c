@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 21:11:41 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 15:20:35 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:37:24 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 static void	print_win(t_env *e)
 {
-	size_t	i;
-
-	addch('\n');
-	i = -1;
-	while (++i < (e->col - ft_strlen(MSG_WON)) / 2)
-		addch(' ');
-	addstr(MSG_WON);
+	attrset(A_BOLD | COLOR_PAIR(CP_PLAY));
+	mvaddstr(e->row - 2, (e->col - ft_strlen(MSG_WON)) / 2, MSG_WON);
+	attrset(A_NORMAL);
 	e->state = STATE_WON;
 }
 
@@ -83,6 +79,8 @@ void	print_map(t_env *e)
 	size_t	starting_col;
 
 	find_starting_row_col(e, &starting_row, &starting_col);
+	if (e->top == WIN_VALUE * 2)
+		clear();
 	print_map_score(e);
 	print_board(starting_row - 1, starting_col, e->size);
 	row = 0;
@@ -98,6 +96,6 @@ void	print_map(t_env *e)
 		}
 		row++;
 	}
-	if (e->state == STATE_NO && e->top == WIN_VALUE)
+	if (e->top == WIN_VALUE)
 		print_win(e);
 }

@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 14:04:10 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:26:30 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,16 @@ int	main(void)
 	if (e.state == STATE_LOST)
 	{
 		attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
-		mvprintw(e.row - 2, (e.col - ft_strlen(MSG_LOST)) / 2, MSG_LOST);
+		if ((size_t)e.col > ft_strlen(MSG_LOST) || NO_UNICODE)
+			mvprintw(e.row - 2, (e.col - ft_strlen(MSG_LOST)) / 2, MSG_LOST);
+		else
+			mvprintw(e.row - 2, 0, &MSG_LOST[8]);
 		attrset(A_NORMAL);
 		e.key = getch();
 		while (is_arrow(e.key))
 			e.key = getch();
 	}
-	if (!save_score(&e))
+	if (e.key != KEY_RESIZE && !save_score(&e))
 		return (end(&e, 5));
 	return (end(&e, 0));
 }

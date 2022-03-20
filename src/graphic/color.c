@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 12:42:03 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:28:33 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:10:06 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_color(const int val)
 
 void	main_colors(void)
 {
-	init_color(C_LOW_GREEN, r(0x34), r(0x8c), r(0x37));
+	init_color(C_LOW_GREEN, r(0x34), r(0x8c), r(0x46));
 }
 
 void	main_pairs(void)
