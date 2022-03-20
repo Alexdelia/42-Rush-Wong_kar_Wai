@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/20 14:55:45 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/20 15:14:39 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NCFLAGS +=	$(shell ncursesw5-config --cflags --libs)
 # **************************************************************************** #
 #	MAKEFILE	#
 
-#MAKEFLAGS += --silent
+MAKEFLAGS += --silent
 
 SHELL := bash
 
