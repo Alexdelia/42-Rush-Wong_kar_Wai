@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:49:46 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:07:36 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ bool	choose_score(t_env *e)
 	{
 		if (!resize(e))
 			return (false);
-		choose_score(e);
+		if (!choose_score(e))
+			return (false);
 	}
 	curs_set(1);
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:16:30 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 14:04:10 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,17 @@ int	main(void)
 		return (end(&e, 1));
 	if (!menu(&e))
 		return (end(&e, 2));
-	resize(&e);
+	if (!resize(&e))
+		return (end(&e, 3));
 	clear();
 	print_map(&e);
 	if (!play(&e))
 		return (end(&e, 4));
 	if (e.state == STATE_LOST)
 	{
+		attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
 		mvprintw(e.row - 2, (e.col - ft_strlen(MSG_LOST)) / 2, MSG_LOST);
+		attrset(A_NORMAL);
 		e.key = getch();
 		while (is_arrow(e.key))
 			e.key = getch();
