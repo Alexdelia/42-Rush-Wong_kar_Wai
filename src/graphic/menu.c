@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:19:51 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:20:22 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 13:36:40 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@ static bool	init_map(t_env *e)
 bool	choose_play(t_env *e)
 {
 	e->key = 0;
-	attrset(A_BOLD);
 	while (e->size < MIN_BOARD || e->size > MAX_BOARD)
 	{
 		clear();
 		if (!NO_UNICODE)
-			print_frame(e, COLOR_PAIR(CP_PLAY));
+			print_frame(e, CP_PLAY);
 		if (e->size != 0)
+		{
+			attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
 			mvprintw(e->row - 2, 2, "MAX: %d  MIN: %d", MIN_BOARD, MAX_BOARD);
+		}
+		attrset(A_BOLD | COLOR_PAIR(CP_PLAY));
 		pmw(e, "board size: ");
 		e->key = getch();
 		if (is_exit(e->key))

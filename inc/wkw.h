@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:20:02 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 13:31:22 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,10 @@ void	print_frame_score(t_env *e, const int color);
 void	print_score(t_env *e, t_score *s, const size_t *sort);
 
 // color
-bool	init_colors(void);
 int		get_color(const int val);
+int		r(const int val);
+bool	init_colors(void);
+void	main_colors(void);
 void	main_pairs(void);
 
 // key handling (key.c)

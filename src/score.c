@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:22:45 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 13:49:46 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ static void	get_pseudo(t_env *e, char *pseudo)
 	size_t	i;
 
 	clear();
+	print_frame(e, CP_MENU);
 	echo();
+	attrset(A_BOLD);
 	pmw(e, "What is your pseudo: ");
 	e->key = getch();
 	i = 0;
@@ -56,6 +58,7 @@ static void	get_pseudo(t_env *e, char *pseudo)
 			break ;
 		e->key = getch();
 	}
+	attrset(A_NORMAL);
 	pseudo[i] = '\0';
 }
 
@@ -65,10 +68,16 @@ bool	save_score(t_env *e)
 	char	pseudo[101];
 
 	clear();
-	mvprintw(1, (e->col - (ft_strlen("SCORE: ") + ft_stlen(e->score))) / 2,
-		"SCORE: %ld\n", e->score);
+	print_frame(e, CP_SCORE);
 	curs_set(1);
-	pmw(e, "do you want to save your score [y/n]");
+	attrset(A_BOLD | COLOR_PAIR(CP_SCORE));
+	mvprintw(e->row / 2 - 3, (e->col - (ft_strlen(MSG_CUR_SCORE) + 1 + ft_stlen(e->score))) / 2,
+		"%s %ld", MSG_CUR_SCORE, e->score);
+	pmw(e, "do you want to save your score");
+	attrset(A_BOLD);
+	mvaddstr(e->row / 2 + 1, (e->col - 5)/ 2, "[y/n]");
+	move(e->row / 2 + 2, e->col / 2 - 1);
+	attrset(A_NORMAL);
 	e->key = getch();
 	if (e->key != 'y' && e->key != 'Y' && e->key != '\n')
 		return (true);

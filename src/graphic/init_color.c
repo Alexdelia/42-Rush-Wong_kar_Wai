@@ -6,13 +6,13 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 12:33:38 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 12:40:52 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 13:30:34 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/wkw.h"
 
-static int	r(const int val)
+int	r(const int val)
 {
 	return ((val * 1000) / 256);
 }
@@ -77,6 +77,7 @@ bool	init_colors(void)
 	start_color();
 	create_colors_front();
 	create_colors_back();
+	main_colors();
 	main_pairs();
 	init_pairs();
 	return (true);
