@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:18:42 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 13:22:45 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	get_pseudo(t_env *e, char *pseudo)
 			pseudo[i] = (char)e->key;
 			i++;
 		}
-		else if (is_exit(e->key))
+		else if (is_exit(e->key) || e->key == KEY_RESIZE)
 			break ;
 		e->key = getch();
 	}
