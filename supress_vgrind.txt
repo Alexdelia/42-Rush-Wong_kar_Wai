@@ -1,0 +1,12 @@
+{
+	<supress_ncurses>
+	Memcheck:Leak
+	...
+	obj:/usr/lib/x86_64-linux-gnu/libncursesw.so.6.2
+}
+{
+	<supress_tinfo>
+	Memcheck:Leak
+	...
+	obj:/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2
+}
