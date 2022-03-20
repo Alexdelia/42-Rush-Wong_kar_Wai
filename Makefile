@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/20 14:29:31 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/20 14:55:45 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,6 +117,6 @@ re:			fclean all
 
 -include $(OBJS:.o=.d)
 
-.PHONY: all clean fclean re launch lib test
+.PHONY: all clean fclean re launch test
 
 # **************************************************************************** #
