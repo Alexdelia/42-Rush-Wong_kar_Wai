@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:19:51 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/19 15:19:08 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 13:20:22 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ static bool	init_map(t_env *e)
 
 bool	choose_play(t_env *e)
 {
-	clear();
-	if (!NO_UNICODE)
-		print_frame(e, COLOR_PAIR(CP_PLAY));
 	e->key = 0;
 	attrset(A_BOLD);
 	while (e->size < MIN_BOARD || e->size > MAX_BOARD)
 	{
+		clear();
+		if (!NO_UNICODE)
+			print_frame(e, COLOR_PAIR(CP_PLAY));
 		if (e->size != 0)
 			mvprintw(e->row - 2, 2, "MAX: %d  MIN: %d", MIN_BOARD, MAX_BOARD);
 		pmw(e, "board size: ");
@@ -80,9 +80,15 @@ bool	menu(t_env *e)
 				return (false);
 		}
 		else if (e->key == 's' || e->key == 'S')
-			choose_score(e);
+		{
+			if (!choose_score(e))
+				return (false);
+		}
 		else if (e->key == KEY_RESIZE)
-			resize(e);
+		{
+			if (!resize(e))
+				return (false);
+		}
 		else
 			return (false);
 	}

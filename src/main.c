@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:31:34 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 12:22:37 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/20 13:16:30 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ bool	play(t_env *e)
 			e->key = getch();
 			if (e->key == KEY_RESIZE)
 			{
-				resize(e);
+				if (!resize(e))
+					return (false);
 				clear();
 				print_map(e);
 			}
