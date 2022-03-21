@@ -6,11 +6,11 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/03/20 15:14:39 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/21 17:55:25 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	game_2048
+NAME =	2048
 #CC = 	clang
 CC =	cc
 AR =	ar rcs
