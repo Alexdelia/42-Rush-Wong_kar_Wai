@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 12:33:38 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 13:30:34 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/23 11:59:46 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	create_colors_front(void)
 
 static void	create_colors_back(void)
 {
-	init_color(COLOR_B_0, r(0x20), r(0x20), r(0x20));
+	init_color(COLOR_B_0, r(0x94), r(0x8e), r(0x83));
 	init_color(COLOR_B_2, r(0xee), r(0xf4), r(0xfa));
 	init_color(COLOR_B_4, r(0xed), r(0xe0), r(0xc8));
 	init_color(COLOR_B_8, r(0xf2), r(0xb1), r(0x79));
@@ -53,7 +53,7 @@ static void	create_colors_back(void)
 
 static void	init_pairs(void)
 {
-	init_pair(0, COLOR_F_0, COLOR_B_0);
+	init_pair(CP_0, COLOR_F_0, COLOR_B_0);
 	init_pair(2, COLOR_F_2, COLOR_B_2);
 	init_pair(4, COLOR_F_4, COLOR_B_4);
 	init_pair(8, COLOR_F_8, COLOR_B_8);
@@ -80,5 +80,6 @@ bool	init_colors(void)
 	main_colors();
 	main_pairs();
 	init_pairs();
+	bkgd(COLOR_PAIR(CP_WINDOW));
 	return (true);
 }
