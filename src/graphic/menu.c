@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 19:19:51 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 14:53:48 by adelille         ###   ########.fr       */
+/*   Updated: 2022/03/26 18:24:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool	choose_play(t_env *e)
 		if (e->size != 0)
 		{
 			attrset(A_BOLD | COLOR_PAIR(CP_EXIT));
-			mvprintw(e->row - 2, 2, "MAX: %d  MIN: %d", MIN_BOARD, MAX_BOARD);
+			mvprintw(e->row - 2, 2, "MIN: %d  MAX: %d", MIN_BOARD, MAX_BOARD);
 		}
 		attrset(A_BOLD | COLOR_PAIR(CP_PLAY));
 		pmw(e, "board size: ");
