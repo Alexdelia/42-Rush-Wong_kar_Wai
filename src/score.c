@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:55:46 by adelille          #+#    #+#             */
-/*   Updated: 2022/03/20 14:47:59 by adelille         ###   ########.fr       */
+/*   Updated: 2022/05/10 17:27:58 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	get_pseudo(t_env *e, char *pseudo)
 	print_frame(e, CP_MENU);
 	echo();
 	attrset(A_BOLD);
-	pmw(e, "What is your pseudo: ");
+	pmw(e, "Enter your name: ");
 	e->key = getch();
 	i = 0;
 	while (i < 100 && e->key != '\n')
