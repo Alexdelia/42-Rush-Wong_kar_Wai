@@ -99,7 +99,7 @@ bool	menu(t_env *e)
 		print_menu(e);
 		if (!menu_key_handle(e))
 			return (false);
-	}	
+	}
 	clear();
 	curs_set(0);
 	return (init_map(e));
